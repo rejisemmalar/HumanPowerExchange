@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HumanPowerExchange</string>
+
+    <string name="user_name">பயனர்பெயர்:</string>
+    <string name="password">கடவுச்சொல்:</string>
+    <string name="cnf_password">கடவுச்சொல்லை உறுதிப்படுத்தவும்:</string>
+    <string name="register">பதிவு:</string>
+
+    <string name="phone_no">தொலைபேசி எண்:</string>
+    <string name="address_line1">முகவரி வரி 1:</string>
+    <string name="address_line2">முகவரி வரி 2:</string>
+    <string name="city">நகரம்:</string>
+    <string name="pin_code">அஞ்சல் குறியீடு:</string>
+
+    <string name="login_button">உள்நுழைய</string>
+    <string name="signup_button">பதிவுபெறுக</string>
+
+
+</resources>
