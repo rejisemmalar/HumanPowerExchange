@@ -11,9 +11,47 @@
     <string name="address_line2">Address Line 2:</string>
     <string name="city">City:</string>
     <string name="pin_code">PinCode:</string>
+    <string name="are_you">Are You?</string>
+    <string name="service_provider">Service Provider:</string>
+    <string name="what_kind_of_service_provider">What Kind Of Service Provider:</string>
+    <string name="consumer">Consumer:</string>
+    <string name="details_about_you_profession">Details About You Profession</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="verify">Verify</string>
+    <string name="o_t_p">OTP</string>
+    <string name="new_password">New Password:</string>
+    <string name="next">Next</string>
+
 
     <string name="login_button">Login</string>
     <string name="signup_button">Sign Up</string>
+    <string name="next_button">Next</string>
+    <string name="consumer_button">Consumer</string>
+    <string name="service_provider_button">Service Provider</string>
+    <string name="finish_button">Finish</string>
+    <string name="submit_button">Submit</string>
+    <string name="beautitions_button">Beautitions</string>
+    <string name="carpenter_button">Carpenter</string>
+    <string name="carttaker_button">Carttaker</string>
+    <string name="chef_button">Chef</string>
+    <string name="cleaner_button">Cleaner</string>
+    <string name="gamecoach_button">Game Coach</string>
+    <string name="driver_button">Driver</string>
+    <string name="designer_button">Designer</string>
+    <string name="electrician_button">Electrician</string>
+    <string name="gardeners_button">Gardeners</string>
+    <string name="hometutors_button">Home Tutors</string>
+    <string name="maidservant_button">Maid Servant</string>
+    <string name="mason_button">Mason</string>
+    <string name="mechanic">Mechanic</string>
+    <string name="painter_button">Painter</string>
+    <string name="photographer_button">Photographer</string>
+    <string name="plumber_button">Plumber</string>
+    <string name="social_worker_button">Social Worker</string>
+    <string name="tailor_button">Tailor</string>
+    <string name="watchmen_button">Watchmen</string>
+    <string name="welder_button">welder</string>
+
 
 </resources>
 

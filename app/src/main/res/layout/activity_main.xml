@@ -14,9 +14,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="151dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="125dp"
         android:ems="10"
         android:hint="@string/user_name"
         android:inputType="textPersonName"
@@ -29,12 +29,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="207dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="193dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:textColor="#040303"
         android:textColorHint="#6200EE" />
 
     <Button
@@ -62,6 +63,35 @@
         android:text="@string/signup_button"
         android:onClick="SignUp"/>
 
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="123dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="194dp"
+        android:onClick="Forgotpassword"
+        android:text="@string/forgot_password"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="209dp"
+        android:layout_height="176dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginBottom="8dp"
+        app:srcCompat="@drawable/bavkground" />
 
 
 </RelativeLayout>

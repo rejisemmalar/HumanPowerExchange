@@ -12,9 +12,50 @@
     <string name="address_line2">முகவரி வரி 2:</string>
     <string name="city">நகரம்:</string>
     <string name="pin_code">அஞ்சல் குறியீடு:</string>
+    <string name="are_you">நீங்கள்?</string>
+    <string name="service_provider">சேவை வழங்குநர்:</string>
+    <string name="what_kind_of_service_provider">என்ன வகையான சேவை வழங்குநர்:</string>
+    <string name="consumer">நுகர்வோர்</string>
+    <string name="details_about_you_profession">உங்களைப் பற்றிய விவரங்கள்</string>
+    <string name="forgot_password">கடவுச்சொல்லை மறந்துவிட்டீர்களா</string>
+    <string name="verify">சரிபார்க்கவும்</string>
+    <string name="o_t_p">OTP</string>
+    <string name="new_password">புதிய கடவுச்சொல்:</string>
+    <string name="next">அடுத்தது</string>
+
+
+
 
     <string name="login_button">உள்நுழைய</string>
     <string name="signup_button">பதிவுபெறுக</string>
+    <string name="next_button">அடுத்தது</string>
+    <string name="consumer_button">நுகர்வோர்</string>
+    <string name="service_provider_button">சேவை வழங்குநர்</string>
+    <string name="finish_button">முடி</string>
+    <string name="submit_button">சமர்ப்பிக்கவும்</string>
+    <string name="beautitions_button">அழகு நிபுணர்</string>
+    <string name="carpenter_button">தச்சர்</string>
+    <string name="carttaker_button">காவற் பொறுப்பாளர்</string>
+    <string name="chef_button">சமையல்காரர்கள்</string>
+    <string name="cleaner_button">தூய்மையாக்குபவர்</string>
+    <string name="gamecoach_button">விளையாட்டு பயிற்சியாளர்</string>
+    <string name="driver_button">ஓட்டுனர்</string>
+    <string name="designer_button">வடிவமைப்பாளர்</string>
+    <string name="electrician_button">மின்னியல் வல்லுநர்</string>
+    <string name="gardeners_button">தோட்டக்காரர்கள்</string>
+    <string name="hometutors_button">வீட்டு ஆசிரியர்</string>
+    <string name="maidservant_button">பணிப்பெண்</string>
+    <string name="mason_button">கொத்தனார்</string>
+    <string name="mechanic">இயந்திர வல்லுநர்</string>
+    <string name="painter_button">வண்ணம் பூசுவது</string>
+    <string name="photographer_button">புகைப்படக்காரர்</string>
+    <string name="plumber_button">குழாய்ப் பணியர்</string>
+    <string name="social_worker_button">சமூக சேவகர்</string>
+    <string name="tailor_button">தையல்காரர்</string>
+    <string name="watchmen_button">காவல்காரர்கள்</string>"
+    <string name="welder_button">வெல்டர்</string>
+
+
 
 
 </resources>

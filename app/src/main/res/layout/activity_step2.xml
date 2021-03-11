@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Step2">
+
+    <TextView
+        android:id="@+id/are_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="114dp"
+        android:text="@string/are_you"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <Button
+        android:id="@+id/service_provider_button"
+        android:layout_width="129dp"
+        android:layout_height="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:text="@string/service_provider_button"
+        tools:layout_editor_absoluteX="246dp"
+        tools:layout_editor_absoluteY="242dp"
+        android:onClick="ServiceProvider"/>
+
+    <Button
+        android:id="@+id/consumer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="269dp"
+        android:text="@string/consumer_button"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="242dp"
+        android:onClick="Consumer"/>
+</RelativeLayout>
