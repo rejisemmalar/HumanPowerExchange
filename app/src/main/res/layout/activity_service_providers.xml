@@ -54,6 +54,7 @@
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/beautitions_button"
+                android:onClick="Beautitions"
                 android:textSize="18sp" />
 
 
@@ -61,120 +62,140 @@
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/carpenter_button"
+                android:onClick="Carpenter"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/carttaker_button"
+                android:onClick="Carttaker"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/chef_button"
+                android:onClick="Chef"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/cleaner_button"
+                android:onClick="Cleaner"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/gamecoach_button"
+                android:onClick="GameCoach"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/driver_button"
+                android:onClick="Driver"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/designer_button"
+                android:onClick="Designer"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/electrician_button"
+                android:onClick="Electrician"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/gardeners_button"
+                android:onClick="Gardener"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/hometutors_button"
+                android:onClick="HomeTutors"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/maidservant_button"
+                android:onClick="Maidservant"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/mason_button"
+                android:onClick="Mason"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/mechanic"
+                android:onClick="Mechanic"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/painter_button"
+                android:onClick="Painter"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/photographer_button"
+                android:onClick="Photographer"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/plumber_button"
+                android:onClick="Plumber"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/social_worker_button"
+                android:onClick="SocialWorker"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/tailor_button"
+                android:onClick="Tailor"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/watchmen_button"
+                android:onClick="Watchmen"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
                 android:text="@string/welder_button"
+                android:onClick="Welder"
                 android:textSize="18sp" />
 
         </LinearLayout>

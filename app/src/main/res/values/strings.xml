@@ -21,6 +21,7 @@
     <string name="o_t_p">OTP</string>
     <string name="new_password">New Password:</string>
     <string name="next">Next</string>
+    <string name="the_services_that_can_be_provided_by_you">The Services That Can Be Provided By You:</string>
 
 
     <string name="login_button">Login</string>
@@ -51,6 +52,7 @@
     <string name="tailor_button">Tailor</string>
     <string name="watchmen_button">Watchmen</string>
     <string name="welder_button">welder</string>
+    <string name="add_button">Add Services</string>
 
 
 </resources>

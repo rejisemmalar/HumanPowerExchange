@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/finish_button"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BeautitionsPage">
-
+    tools:context=".CarpenterPage">
 
     <TextView
         android:id="@+id/service_provider"
@@ -36,7 +35,7 @@
         android:ems="10"
         android:hint="@string/user_name"
         android:inputType="textPersonName"
-        android:textColorHint="#FF1493" />
+        android:textColorHint="#663300" />
 
     <EditText
         android:id="@+id/phone_no"
@@ -51,7 +50,7 @@
         android:ems="10"
         android:hint="@string/phone_no"
         android:inputType="phone"
-        android:textColorHint="#FF1493" />
+        android:textColorHint="#663300" />
 
     <EditText
         android:id="@+id/the_services_that_can_be_provided_by_you"
@@ -67,7 +66,7 @@
         android:gravity="start|top"
         android:hint="@string/the_services_that_can_be_provided_by_you"
         android:inputType="textMultiLine"
-        android:textColorHint="#FF1493" />
+        android:textColorHint="#663300" />
 
     <EditText
         android:id="@+id/address_line_1"
@@ -82,7 +81,7 @@
         android:ems="10"
         android:hint="@string/address_line1"
         android:inputType="textPostalAddress"
-        android:textColorHint="#FF1493" />
+        android:textColorHint="#663300" />
 
     <EditText
         android:id="@+id/address_line_2"
@@ -97,7 +96,7 @@
         android:ems="10"
         android:hint="@string/address_line2"
         android:inputType="textPostalAddress"
-        android:textColorHint="#FF1493" />
+        android:textColorHint="#663300" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -109,7 +108,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="31dp"
-        app:srcCompat="@drawable/beautitions" />
+        app:srcCompat="@drawable/carpenter" />
 
     <Button
         android:id="@+id/add_button"
@@ -135,6 +134,5 @@
         android:layout_marginRight="34dp"
         android:layout_marginBottom="43dp"
         android:text="@string/finish_button" />
-
 
 </RelativeLayout>

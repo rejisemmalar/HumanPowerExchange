@@ -19,6 +19,9 @@
     <color name="Black">	#000000</color>
     <color name="Indiogo">#4b0082 </color>
     <color name="white">#ffffff </color>
+    <color name="brown"> #663300</color>
+    <color name="skyblue"> #87ceeb</color>
+    <color name="llpink">#eb87ce</color>
 
     
 </resources>

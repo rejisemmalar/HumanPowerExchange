@@ -22,6 +22,7 @@
     <string name="o_t_p">OTP</string>
     <string name="new_password">புதிய கடவுச்சொல்:</string>
     <string name="next">அடுத்தது</string>
+    <string name="the_services_that_can_be_provided_by_you">நீங்கள் வழங்கக்கூடிய சேவைகள்:</string>
 
 
 
@@ -54,6 +55,7 @@
     <string name="tailor_button">தையல்காரர்</string>
     <string name="watchmen_button">காவல்காரர்கள்</string>"
     <string name="welder_button">வெல்டர்</string>
+    <string name="add_button">சேவைகளைச் சேர்க்கவும்</string>
 
 
 

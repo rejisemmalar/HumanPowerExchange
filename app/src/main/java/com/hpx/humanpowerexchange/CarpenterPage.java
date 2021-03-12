@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class BeautitionsPage extends AppCompatActivity {
+public class CarpenterPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beautitions_page);
+        setContentView(R.layout.activity_carpenter_page);
     }
     public void AddServices(View V){
         Intent i=new Intent(this,ServiceProviders.class);
