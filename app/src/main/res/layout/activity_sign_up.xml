@@ -25,7 +25,7 @@
         android:ems="10"
         android:hint="@string/user_name"
         android:inputType="textPersonName"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp"
         android:typeface="normal" />
 
@@ -46,7 +46,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <EditText
@@ -66,7 +66,7 @@
         android:ems="10"
         android:hint="@string/phone_no"
         android:inputType="phone"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <EditText
@@ -88,7 +88,7 @@
         android:gravity="start|top"
         android:hint="@string/address_line1"
         android:inputType="textMultiLine"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <EditText
@@ -109,7 +109,7 @@
         android:gravity="start|top"
         android:hint="@string/address_line2"
         android:inputType="textMultiLine"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <EditText
@@ -130,7 +130,7 @@
         android:gravity="start|top"
         android:hint="@string/city"
         android:inputType="textMultiLine"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <EditText
@@ -150,7 +150,7 @@
         android:ems="10"
         android:hint="@string/pin_code"
         android:inputType="textPostalAddress"
-        android:textColor="#FF0000"
+        android:textColorHint="#000000"
         android:textSize="20sp" />
 
     <Button
@@ -183,7 +183,7 @@
         android:ems="10"
         android:hint="@string/cnf_password"
         android:inputType="textPassword"
-        android:textColor="#FF0000" />
+        android:textColorHint="#000000" />
 
     <TextView
         android:id="@+id/resgister"

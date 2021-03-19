@@ -6,6 +6,7 @@
     <string name="password">கடவுச்சொல்:</string>
     <string name="cnf_password">கடவுச்சொல்லை உறுதிப்படுத்தவும்:</string>
     <string name="register">பதிவு:</string>
+    <string name="choose_a_language">மொழியைத் தேர்வுசெய்க</string>
 
     <string name="phone_no">தொலைபேசி எண்:</string>
     <string name="address_line1">முகவரி வரி 1:</string>
@@ -18,9 +19,11 @@
     <string name="consumer">நுகர்வோர்</string>
     <string name="details_about_you_profession">உங்களைப் பற்றிய விவரங்கள்</string>
     <string name="forgot_password">கடவுச்சொல்லை மறந்துவிட்டீர்களா</string>
+    <string name="reset_password">கடவுச்சொல்லை மீட்டமைக்க</string>
     <string name="verify">சரிபார்க்கவும்</string>
     <string name="o_t_p">OTP</string>
     <string name="new_password">புதிய கடவுச்சொல்:</string>
+    <string name="old_password">பழைய கடவுச்சொல்:</string>
     <string name="next">அடுத்தது</string>
     <string name="the_services_that_can_be_provided_by_you">நீங்கள் வழங்கக்கூடிய சேவைகள்:</string>
 
@@ -36,7 +39,7 @@
     <string name="submit_button">சமர்ப்பிக்கவும்</string>
     <string name="beautitions_button">அழகு நிபுணர்</string>
     <string name="carpenter_button">தச்சர்</string>
-    <string name="carttaker_button">காவற் பொறுப்பாளர்</string>
+    <string name="caretaker_button">காவற் பொறுப்பாளர்</string>
     <string name="chef_button">சமையல்காரர்கள்</string>
     <string name="cleaner_button">தூய்மையாக்குபவர்</string>
     <string name="gamecoach_button">விளையாட்டு பயிற்சியாளர்</string>
@@ -56,6 +59,8 @@
     <string name="watchmen_button">காவல்காரர்கள்</string>"
     <string name="welder_button">வெல்டர்</string>
     <string name="add_button">சேவைகளைச் சேர்க்கவும்</string>
+    <string name="tamil_way">தமிழ்</string>
+    <string name="english_way">English</string>
 
 
 

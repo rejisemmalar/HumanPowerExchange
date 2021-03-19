@@ -5,6 +5,7 @@
     <string name="password">Password:</string>
     <string name="cnf_password">Confirm Password:</string>
     <string name="register">Register:</string>
+    <string name="choose_a_language">CHOSSE A LANGUAGE</string>
 
     <string name="phone_no">Phone Number:</string>
     <string name="address_line1">Address Line 1:</string>
@@ -17,9 +18,11 @@
     <string name="consumer">Consumer:</string>
     <string name="details_about_you_profession">Details About You Profession</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="verify">Verify</string>
-    <string name="o_t_p">OTP</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="verify">Verify:</string>
+    <string name="o_t_p">OTP:</string>
     <string name="new_password">New Password:</string>
+    <string name="old_password">Old Password:</string>
     <string name="next">Next</string>
     <string name="the_services_that_can_be_provided_by_you">The Services That Can Be Provided By You:</string>
 
@@ -33,7 +36,7 @@
     <string name="submit_button">Submit</string>
     <string name="beautitions_button">Beautitions</string>
     <string name="carpenter_button">Carpenter</string>
-    <string name="carttaker_button">Carttaker</string>
+    <string name="caretaker_button">Caretaker</string>
     <string name="chef_button">Chef</string>
     <string name="cleaner_button">Cleaner</string>
     <string name="gamecoach_button">Game Coach</string>
@@ -53,6 +56,8 @@
     <string name="watchmen_button">Watchmen</string>
     <string name="welder_button">welder</string>
     <string name="add_button">Add Services</string>
+    <string name="tamil_way">Tamil</string>
+    <string name="english_way">English</string>
 
 
 </resources>

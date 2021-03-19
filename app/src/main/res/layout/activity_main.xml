@@ -65,19 +65,21 @@
 
     <TextView
         android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="63dp"
+        android:layout_width="170dp"
+        android:layout_height="52dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="123dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="194dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginEnd="201dp"
+        android:layout_marginRight="201dp"
+        android:layout_marginBottom="199dp"
         android:onClick="Forgotpassword"
         android:text="@string/forgot_password"
+        android:textColor="#000000"
         android:textSize="16sp" />
 
     <ImageView
@@ -92,6 +94,21 @@
         android:layout_marginLeft="92dp"
         android:layout_marginBottom="8dp"
         app:srcCompat="@drawable/bavkground" />
+
+    <TextView
+        android:id="@+id/reset_password"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="203dp"
+        android:text="@string/reset_password"
+        android:onClick="ResetPassword"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

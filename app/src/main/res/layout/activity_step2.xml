@@ -18,14 +18,16 @@
         android:layout_marginLeft="53dp"
         android:layout_marginTop="114dp"
         android:text="@string/are_you"
+        android:textColor="#006400"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="146dp" />
 
     <Button
         android:id="@+id/service_provider_button"
-        android:layout_width="129dp"
-        android:layout_height="62dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -35,12 +37,16 @@
         android:text="@string/service_provider_button"
         tools:layout_editor_absoluteX="246dp"
         tools:layout_editor_absoluteY="242dp"
-        android:onClick="ServiceProvider"/>
+        android:onClick="ServiceProvider"
+        android:background="#FF69B4"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/consumer_button"
-        android:layout_width="wrap_content"
-        android:layout_height="68dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -50,5 +56,9 @@
         android:text="@string/consumer_button"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="242dp"
-        android:onClick="Consumer"/>
+        android:onClick="Consumer"
+        android:background="#FF69B4"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 </RelativeLayout>

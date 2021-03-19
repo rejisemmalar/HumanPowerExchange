@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ServiceProviders">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,173 +29,229 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="731dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="134dp"
-        android:layout_marginBottom="5dp">
 
+    <ScrollView
+        android:layout_width="406dp"
+        android:layout_height="718dp"
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/beautitions_button"
+                android:layout_marginTop="40dp"
                 android:onClick="Beautitions"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/beautitions_button"
                 android:textSize="18sp" />
 
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/carpenter_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Carpenter"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/carpenter_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/carttaker_button"
-                android:onClick="Carttaker"
+                android:layout_marginTop="10dp"
+                android:onClick="Caretaker"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/caretaker_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/chef_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Chef"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/chef_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/cleaner_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Cleaner"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/cleaner_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/gamecoach_button"
+                android:layout_marginTop="10dp"
                 android:onClick="GameCoach"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/gamecoach_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/driver_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Driver"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/driver_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/designer_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Designer"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/designer_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/electrician_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Electrician"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/electrician_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/gardeners_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Gardener"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/gardeners_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/hometutors_button"
+                android:layout_marginTop="10dp"
                 android:onClick="HomeTutors"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/hometutors_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/maidservant_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Maidservant"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/maidservant_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/mason_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Mason"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/mason_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/mechanic"
+                android:layout_marginTop="10dp"
                 android:onClick="Mechanic"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/mechanic"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/painter_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Painter"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/painter_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/photographer_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Photographer"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/photographer_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/plumber_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Plumber"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/plumber_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/social_worker_button"
+                android:layout_marginTop="10dp"
                 android:onClick="SocialWorker"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/social_worker_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/tailor_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Tailor"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/tailor_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/watchmen_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Watchmen"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/watchmen_button"
                 android:textSize="18sp" />
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="95dp"
-                android:text="@string/welder_button"
+                android:layout_marginTop="10dp"
                 android:onClick="Welder"
+                android:background="#3700B3"
+                android:textColor="#ffffff"
+                android:text="@string/welder_button"
                 android:textSize="18sp" />
+
 
         </LinearLayout>
     </ScrollView>

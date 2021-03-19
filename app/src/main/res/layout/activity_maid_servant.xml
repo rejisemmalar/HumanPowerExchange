@@ -129,16 +129,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-39dp"
-        android:layout_marginLeft="-39dp"
+        android:layout_marginStart="-72dp"
+        android:layout_marginLeft="-72dp"
         android:layout_marginBottom="35dp"
         app:srcCompat="@drawable/maidservant" />
-
-
-
-
-
-
 
 
 </RelativeLayout>
