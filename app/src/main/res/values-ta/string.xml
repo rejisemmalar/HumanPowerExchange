@@ -7,6 +7,10 @@
     <string name="cnf_password">கடவுச்சொல்லை உறுதிப்படுத்தவும்:</string>
     <string name="register">பதிவு:</string>
     <string name="choose_a_language">மொழியைத் தேர்வுசெய்க</string>
+    <string name="name">பெயர்:</string>
+    <string name="request_work">செய்ய வேண்டிய வேலை</string>
+    <string name="toggle">மாற்று</string>
+
 
     <string name="phone_no">தொலைபேசி எண்:</string>
     <string name="address_line1">முகவரி வரி 1:</string>
@@ -26,6 +30,9 @@
     <string name="old_password">பழைய கடவுச்சொல்:</string>
     <string name="next">அடுத்தது</string>
     <string name="the_services_that_can_be_provided_by_you">நீங்கள் வழங்கக்கூடிய சேவைகள்:</string>
+    <string name="What_kind_of_service_do_you_need">உங்களுக்கு எந்த மாதிரியான சேவை வேண்டும்?</string>
+    <string name="When_do_you_need_services">உங்களுக்கு எப்போது சேவைகள் வேண்டும்?</string>
+    <string name="where_you_need">எந்த இடம்?</string>
 
 
 

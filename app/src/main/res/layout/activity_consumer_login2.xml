@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConsumerLogin">
+    <TextView
+        android:id="@+id/Consumer"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/consumer"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+            <TextView
+                android:id="@+id/When_do_you_need_services"
+                android:layout_width="314dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="60dp"
+                android:text="@string/When_do_you_need_services"
+                android:textColor="#FF0000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <DatePicker
+                android:layout_width="328dp"
+                android:layout_height="398dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:calendarTextColor="@color/Black"
+                android:outlineAmbientShadowColor="@color/red"
+                android:outlineSpotShadowColor="@color/firebrick"/>
+
+            <TextView
+                android:id="@+id/What_kind_of_service_do_you_need"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:text="@string/What_kind_of_service_do_you_need"
+                android:layout_marginStart="30dp"
+                android:inputType="textPersonName"
+                android:textColor="#6200EE"
+                android:textSize="18sp"
+                android:layout_marginTop="80dp"
+                android:textColorHint="@color/Black"/>
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="40dp"
+                android:onClick="Beautitions"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/beautitions_button"
+                android:textSize="18sp" />
+
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Carpenter"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/carpenter_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Caretaker"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/caretaker_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Chef"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/chef_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Cleaner"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/cleaner_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="GameCoach"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/gamecoach_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Driver"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/driver_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Designer"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/designer_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Electrician"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/electrician_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Gardener"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/gardeners_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="HomeTutors"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/hometutors_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Maidservant"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/maidservant_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Mason"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/mason_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Mechanic"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/mechanic"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Painter"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/painter_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Photographer"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/photographer_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Plumber"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/plumber_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="SocialWorker"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/social_worker_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Tailor"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/tailor_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Watchmen"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/watchmen_button"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:onClick="Welder"
+                android:background="#00ff7f"
+                android:textColor="	#cd5c5c"
+                android:layout_marginStart="10dp"
+                android:text="@string/welder_button"
+                android:textSize="18sp" />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

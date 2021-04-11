@@ -4,8 +4,10 @@
     <string name="user_name">UserName:</string>
     <string name="password">Password:</string>
     <string name="cnf_password">Confirm Password:</string>
-    <string name="register">Register:</string>
-    <string name="choose_a_language">CHOSSE A LANGUAGE</string>
+    <string name="register">Register</string>
+    <string name="choose_a_language">CHOOSE A LANGUAGE</string>
+    <string name="name">Name:</string>
+    <string name="request_work">Request Work:</string>
 
     <string name="phone_no">Phone Number:</string>
     <string name="address_line1">Address Line 1:</string>
@@ -25,6 +27,10 @@
     <string name="old_password">Old Password:</string>
     <string name="next">Next</string>
     <string name="the_services_that_can_be_provided_by_you">The Services That Can Be Provided By You:</string>
+    <string name="What_kind_of_service_do_you_need">What kind of service do you need?</string>
+    <string name="When_do_you_need_services">When do you need services?</string>
+    <string name="where_you_need">where you need?</string>
+    <string name="toggle">Toggle</string>
 
 
     <string name="login_button">Login</string>

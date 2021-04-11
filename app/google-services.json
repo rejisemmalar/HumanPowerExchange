@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354113463001",
+    "project_id": "humanpowerexchange",
+    "storage_bucket": "humanpowerexchange.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354113463001:android:fb8f4ca8ba9be1e12614c8",
+        "android_client_info": {
+          "package_name": "com.hpx.humanpowerexchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354113463001-bq9q15fau4t60k0gjumjsv7g637lpdbj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkv2gMSXOQOXQWUGgSTg1xTVnyOzh22Uc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354113463001-bq9q15fau4t60k0gjumjsv7g637lpdbj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

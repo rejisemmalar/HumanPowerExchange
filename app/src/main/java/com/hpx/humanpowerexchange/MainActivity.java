@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     public void ResetPassword(View V){
         Intent i=new Intent(this, ResetPassword.class);
         startActivity(i);
+
+
+    }
+    public void Login(View v){
+        Intent i=new Intent(this,ConsumerLogin.class);
+        startActivity(i);
     }
 
 
