@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ServiceProviderActivity">
 
     <TextView
-        android:id="@+id/LoadingTextView"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="15dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
-        android:padding="15dp"
-        android:text="Please wait while app fetching user details"
-        android:textColor="#3C3A3A"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-
+        android:text="Service Provider page.. will load"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
 
 
 </RelativeLayout>
