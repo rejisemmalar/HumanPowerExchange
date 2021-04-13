@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (userPageId) {
                     case USER_DETAILS_PAGE:
                         intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
-                        startActivity(intent);
+                        intent.putExtra("userDto", String.valueOf(response));
                         break;
                     case SERVICE_PROVIDER_SELECTION_PAGE:
                         intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
