@@ -220,28 +220,7 @@ public class UserDetailsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 UserDto userDto = new Gson().fromJson(String.valueOf(response),UserDto.class);
                 if (userDto!= null && userDto.getId() > 0) {
-                    Intent intent;
-                    switch (userDto.getUser_page()) {
-                        case USER_DETAILS_PAGE:
-                            intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
-                            startActivity(intent);
-                            break;
-                        case SERVICE_PROVIDER_SELECTION_PAGE:
-                            intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
-                            startActivity(intent);
-                            break;
-                        case SERVICE_PROVIDER_PAGE:
-                            intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
-                            startActivity(intent);
-                            break;
-                        case CONSUMER_PAGE:
-                            intent = new Intent(getApplicationContext(), ConsumerActivity.class);
-                            startActivity(intent);
-                            break;
-                        default:
-                            intent = new Intent(getApplicationContext(), this.getClass());
-                    }
-                    intent.putExtra("mobile", userDto.getMobile());
+                    Intent intent = getNextActivity(userDto);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "There is some error in saving user details" , Toast.LENGTH_LONG).show();
@@ -255,6 +234,28 @@ public class UserDetailsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public Intent getNextActivity(UserDto userDto) {
+        Intent intent;
+        switch (userDto.getUser_page()) {
+            case USER_DETAILS_PAGE:
+                intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
+                break;
+            case SERVICE_PROVIDER_SELECTION_PAGE:
+                intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
+                break;
+            case SERVICE_PROVIDER_PAGE:
+                intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
+                break;
+            case CONSUMER_PAGE:
+                intent = new Intent(getApplicationContext(), ConsumerActivity.class);
+                break;
+            default:
+                intent = new Intent(getApplicationContext(), this.getClass());
+        }
+        intent.putExtra("mobile", userDto.getMobile());
+        return intent;
     }
 
     public JsonObjectRequest fetchUserDetails(final String mobile) {

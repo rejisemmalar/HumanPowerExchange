@@ -22,6 +22,7 @@ import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.hpx.humanpowerexchange.restapi.dto.UserDto;
 import com.hpx.humanpowerexchange.utils.UrlConstants;
 
 import org.json.JSONException;
@@ -161,29 +162,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                             preferenceEditor.putBoolean(HPX_USER_VERIFIED, true);
                             preferenceEditor.putString(HPX_MOBILE_ID, mobile);
                             preferenceEditor.commit();
-                            Intent intent;
-                            switch (userPageId) {
-                                case USER_DETAILS_PAGE:
-                                    intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
-                                    startActivity(intent);
-                                    break;
-                                case SERVICE_PROVIDER_SELECTION_PAGE:
-                                    intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
-                                    startActivity(intent);
-                                    break;
-                                case SERVICE_PROVIDER_PAGE:
-                                    intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
-                                    startActivity(intent);
-                                    break;
-                                case CONSUMER_PAGE:
-                                    intent = new Intent(getApplicationContext(), ConsumerActivity.class);
-                                    startActivity(intent);
-                                    break;
-                                default:
-                                    intent = new Intent(getApplicationContext(), this.getClass());
-                            }
-                            intent.putExtra("mobile", mobile);
-                            startActivity(intent);
+                            startActivity(getNextActivity(new UserDto().setUser_page(userPageId)));
                         } else {
                             textView.setText("Otp verified UnSuccessful");
                             textView.setVisibility(View.VISIBLE);
@@ -207,5 +186,27 @@ public class VerifyOtpActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return jsonObjectRequest;
+    }
+
+    public Intent getNextActivity(UserDto userDto) {
+        Intent intent;
+        switch (userDto.getUser_page()) {
+            case USER_DETAILS_PAGE:
+                intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
+                break;
+            case SERVICE_PROVIDER_SELECTION_PAGE:
+                intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
+                break;
+            case SERVICE_PROVIDER_PAGE:
+                intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
+                break;
+            case CONSUMER_PAGE:
+                intent = new Intent(getApplicationContext(), ConsumerActivity.class);
+                break;
+            default:
+                intent = new Intent(getApplicationContext(), this.getClass());
+        }
+        intent.putExtra("mobile", userDto.getMobile());
+        return intent;
     }
 }
