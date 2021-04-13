@@ -13,4 +13,11 @@ public class UrlConstants {
     public static final String EDIT_USER = SERVER_DOMAIN + "/api/user/edit.php";
 
 
+    public static final String SERVICES_FOR_USER = SERVER_DOMAIN + "/api/service/read_for_user.php";
+    public static final String SAVE_USER_SERVICES = SERVER_DOMAIN + "/api/user-service/update.php";
+    public static final String UPDATE_USER_PAGE = SERVER_DOMAIN + "/api/user/update_user_page.php";
+
+
+
+
 }
