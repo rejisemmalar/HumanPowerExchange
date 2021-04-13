@@ -1,7 +1,30 @@
 <resources>
     <string name="app_name">HumanPowerExchange</string>
-    <string name="user_name">UserName:</string>
+    <string name="user_name">UserName</string>
     <string name="password">Password:</string>
     <string name="login_button">Login</string>
     <string name="signup_button">Sign Up</string>
+    <string name="please_edit_your_details">Please Edit Your Details</string>
+
+    <string name="name">*Name:</string>
+    <string name="mobile">Mobile:</string>
+    <string name="email">Email:</string>
+    <string name="Address">Address:</string>
+    <string name="line1">*Line1:</string>
+    <string name="line2">Line2:</string>
+    <string name="city">*City:</string>
+    <string name="state">*State:</string>
+    <string name="pincode">*Pincode:</string>
+    <string name="country">*Country:</string>
+
+    <string name="enterName">Enter your Name</string>
+    <string name="enterEmail">Enter your Email ID</string>
+    <string name="enterLine1">Address Line1</string>
+    <string name="enterLine2">Address Line2:</string>
+    <string name="enterCity">City</string>
+    <string name="enterState">State</string>
+    <string name="enterPincode">Pincode</string>
+    <string name="enterCountry">Country</string>
+    <string name="save_details">Save</string>
+
 </resources>
