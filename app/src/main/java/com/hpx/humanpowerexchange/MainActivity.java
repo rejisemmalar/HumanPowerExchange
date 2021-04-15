@@ -1,5 +1,6 @@
 package com.hpx.humanpowerexchange;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private int userPageId = 0;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        pDialog = new ProgressDialog(this);
+        // Showing progress dialog before making http request
+        pDialog.setMessage("Please wait while fetching user details...");
+        pDialog.show();
+
         SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
         boolean verifiedUser = preferences.getBoolean(HPX_USER_VERIFIED, false);
         String mobile = preferences.getString(HPX_MOBILE_ID, "" );
@@ -44,6 +52,19 @@ public class MainActivity extends AppCompatActivity {
             // find the phone number and trigger otp verification process
             Intent i = new Intent(getApplicationContext(), SendOtpActivity.class);
             startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hidePDialog();
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
         }
     }
 
