@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/serviceRequestId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_alignBottom="@id/serviceRequestDetail"
+        android:layout_alignTop="@id/serviceRequestDetail"
+        android:background="@android:color/background_light"
+        android:text="id"
+        android:textColor="@color/Black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/serviceRequestStatus"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/serviceRequestId"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:background="@android:color/background_light"
+        android:text="status"
+        android:layout_alignBottom="@id/serviceRequestDetail"
+        android:layout_alignTop="@id/serviceRequestDetail"
+        android:textColor="@color/Black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/serviceRequestDetail"
+        android:layout_toEndOf="@id/serviceRequestStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_light"
+        android:drawablePadding="5dp"
+        android:drawableEnd="@drawable/icon_right_aero_black"
+        android:minWidth="0dp"
+        android:textAlignment="gravity"
+        android:text="Description..."
+        android:textAllCaps="false"
+        android:textColor="@color/Black" />
+
+</RelativeLayout>
