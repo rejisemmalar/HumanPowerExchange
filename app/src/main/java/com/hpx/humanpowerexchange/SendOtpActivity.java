@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,9 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
@@ -31,10 +34,13 @@ import com.google.android.gms.auth.api.credentials.CredentialsOptions;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.hpx.humanpowerexchange.utils.UrlConstants;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+
+import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 
 public class SendOtpActivity extends AppCompatActivity {
 
@@ -46,6 +52,7 @@ public class SendOtpActivity extends AppCompatActivity {
 
     private String button_pick_number = "Pick the Number";
     private String button_send_otp = "Send Otp";
+    private String otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +71,7 @@ public class SendOtpActivity extends AppCompatActivity {
                     String mobile = txtView.getText().toString();
                     AppController.getInstance().addToRequestQueue(sendOtp(mobile), TAG);
 
-                    Intent i = new Intent(getApplicationContext(), VerifyOtpActivity.class);
-                    i.putExtra("mobile", mobile);
-                    startActivity(i);
+
                 }
             }
         });
@@ -148,50 +153,38 @@ public class SendOtpActivity extends AppCompatActivity {
         });
     }
 
-    public StringRequest sendOtp(final String mobile) {
-        StringRequest stringRequest = null;
+    public JsonObjectRequest sendOtp(final String mobile) {
+        JSONObject jsonBody = new JSONObject();
         try {
-            JSONObject jsonBody = new JSONObject();
             jsonBody.put("mobile", mobile);
-            final String requestBody = jsonBody.toString();
-
-            stringRequest = new StringRequest(Request.Method.POST, UrlConstants.SEND_OTP_URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(AppController.getInstance().getApplicationContext(), "Otp send to your mobile number: "+ mobile + " we will read and verify it quickly" , Toast.LENGTH_LONG).show();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(AppController.getInstance().getApplicationContext(), "There is some error in sending Otp to your mobile number: "+ mobile , Toast.LENGTH_LONG).show();
-                }
-            }) {
-                @Override
-                public String getBodyContentType() {
-                    return "application/json; charset=utf-8";
-                }
-
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                @Override
-                public byte[] getBody() {
-                    return requestBody.getBytes(StandardCharsets.UTF_8);
-                }
-
-                @Override
-                protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                    String responseString = "";
-                    if (response != null) {
-                        responseString = String.valueOf(response.statusCode);
-                        // can get more details such as response.headers
-                    }
-                    assert response != null;
-                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-                }
-            };
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return stringRequest;
+        return new JsonObjectRequest(UrlConstants.SEND_OTP_URL, jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+                        Toast.makeText(AppController.getInstance().getApplicationContext(), "Otp send to your mobile number: "+ mobile + " we will read and verify it quickly" , Toast.LENGTH_LONG).show();
+
+                        try {
+                            otp = response.getString("otp");
+                            Intent i = new Intent(getApplicationContext(), VerifyOtpActivity.class);
+                            i.putExtra("mobile", mobile);
+                            i.putExtra("otp", otp);
+                            startActivity(i);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AppController.getInstance().getApplicationContext(), "There is some error in sending Otp to your mobile number: "+ mobile , Toast.LENGTH_LONG).show();
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+            }
+        }
+        );
     }
 
 }

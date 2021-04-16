@@ -7,18 +7,99 @@
     tools:context=".ServiceRequestActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/requestIdView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:padding="5dp"
-        android:text="Your new Request"
+        android:text="RequestId: @id@"
         android:textAlignment="center"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/statusTextHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/statusText"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Status:-"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:background="@color/litepink"
+        android:text="New "
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/serviceListPickOne"
+        android:layout_below="@id/requestIdView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5dp"
+        android:includeFontPadding="true"
+        android:background="@color/white"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        android:text="Select the service you want" />
+
+    <TextView
+        android:id="@+id/requestDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceListPickOne"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:text="Request Description:"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editDescription"
+        android:layout_below="@id/requestDescription"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="top"
+        android:hint="Enter the service Request Description"
+        android:background="@drawable/description_button"
+        />
+
+    <Button
+        android:id="@+id/serviceRequestSave"
+        android:layout_below="@id/editDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5dp"
+        android:background="@color/skyblue"
+        android:text="Save"
+        />
+
 
 </RelativeLayout>

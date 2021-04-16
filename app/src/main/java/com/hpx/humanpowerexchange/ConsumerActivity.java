@@ -3,7 +3,9 @@ package com.hpx.humanpowerexchange;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +30,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.READ_SERVICE_REQUEST;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
@@ -50,6 +56,11 @@ public class ConsumerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumer);
+
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor preferenceEditor =  preferences.edit();
+        preferenceEditor.putInt(HPX_USER_PAGE, CONSUMER_PAGE);
+        preferenceEditor.commit();
 
         listView = (ListView) findViewById(R.id.listServiceRequest);
         adapter = new ServiceRequestAdapter(this, serviceRequestList);

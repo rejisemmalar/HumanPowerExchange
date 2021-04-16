@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServiceRequestEdit">
+
+    <TextView
+        android:id="@+id/requestIdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:text="RequestId: @id@"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/statusTextHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/statusText"
+        android:padding="5dp"
+        android:text="Status:-"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/litepink"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/consumerNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/requestIdView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:paddingLeft="5dp"
+        android:text="ConsumerName: @consumerName@"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/consumerMobileView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/consumerNameView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:paddingLeft="5dp"
+        android:text="ConsumerMobile: @consumerMobile@"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/providerNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/consumerMobileView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:paddingLeft="5dp"
+        android:text="ProviderName: @providerName@"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/providerMobileView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/providerNameView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:paddingLeft="5dp"
+        android:text="ProviderMobile: @providerMobile@"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/serviceNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/providerMobileView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:paddingLeft="5dp"
+        android:text="ServiceName: @serviceName@"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/requestDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceNameView"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:text="Request Description:"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editDescription"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/requestDescription"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/description_button"
+        android:gravity="top"
+        android:inputType="none"
+        android:hint="Enter the service Request Description" />
+
+    <Button
+        android:id="@+id/serviceRequestSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDescription"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/skyblue"
+        android:paddingLeft="5dp"
+        android:visibility="invisible"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/serviceRequestAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDescription"
+        android:layout_toEndOf="@id/serviceRequestSave"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:background="@color/skyblue"
+        android:paddingLeft="5dp"
+        android:visibility="invisible"
+        android:text="Accept" />
+
+    <Button
+        android:id="@+id/serviceRequestReject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDescription"
+        android:layout_toEndOf="@id/serviceRequestAccept"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:background="@color/skyblue"
+        android:paddingLeft="5dp"
+        android:visibility="invisible"
+        android:text="Reject" />
+
+    <Button
+        android:id="@+id/serviceRequestCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDescription"
+        android:layout_toEndOf="@id/serviceRequestReject"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:background="@color/skyblue"
+        android:paddingLeft="5dp"
+        android:visibility="invisible"
+        android:text="Complete" />
+
+    <TextView
+        android:id="@+id/taskClosedView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceRequestReject"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingLeft="5dp"
+        android:background="@color/yellow"
+        android:text="Task Already Closed"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -53,9 +53,11 @@ public class VerifyOtpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verify_otp);
 
         String mobile="";
+        String otp="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
             mobile = extras.getString("mobile", "");
+            otp = extras.getString("otp", "");
         }
         textView = findViewById(R.id.verifiedTextView);
 
@@ -66,6 +68,13 @@ public class VerifyOtpActivity extends AppCompatActivity {
         otp_textbox_five = findViewById(R.id.otp_edit_box5);
         otp_textbox_six = findViewById(R.id.otp_edit_box6);
         verify_otp = findViewById(R.id.verify_otp_btn);
+
+        otp_textbox_one.setText(otp.substring(0,1));
+        otp_textbox_two.setText(otp.substring(1,2));
+        otp_textbox_three.setText(otp.substring(2,3));
+        otp_textbox_four.setText(otp.substring(3,4));
+        otp_textbox_five.setText(otp.substring(4,5));
+        otp_textbox_six.setText(otp.substring(5,6));
 
         startSMSListener();
 
