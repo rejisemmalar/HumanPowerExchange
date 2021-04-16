@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -32,7 +34,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SAVE_USER_SERVICES;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.UPDATE_USER_PAGE;
@@ -51,6 +56,12 @@ public class ServiceProviderSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_selection);
+
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor preferenceEditor =  preferences.edit();
+        preferenceEditor.putInt(HPX_USER_PAGE, SERVICE_PROVIDER_SELECTION_PAGE);
+        preferenceEditor.commit();
+
         listView = (ListView) findViewById(R.id.list);
         adapter = new ServiceProviderSelectionAdapter(this, serviceList);
         listView.setAdapter(adapter);
@@ -150,14 +161,6 @@ public class ServiceProviderSelectionActivity extends AppCompatActivity {
             }
         }
         );
-
-
-        /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                boolean selected = view.findViewById(R.id.serviceName).isSelected();
-                Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_SHORT).show();
-            }
-        }); */
     }
     @Override
     public void onDestroy() {

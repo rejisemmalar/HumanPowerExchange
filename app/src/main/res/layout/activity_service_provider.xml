@@ -34,5 +34,85 @@
         android:background="@color/skyblue"
         android:layout_alignParentEnd="true"/>
 
+    <TextView
+        android:id="@+id/existingRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/Gold"
+        android:text="Request List For Your Service Provision Selected"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/idDescriptionView"
+        android:layout_below="@id/existingRequest"
+        android:layout_marginStart="10dp"
+        android:padding="5dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="ReqID"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idStatusView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/idDescriptionView"
+        android:layout_below="@id/existingRequest"
+        android:padding="5dp"
+        android:layout_toEndOf="@id/idtextView"
+        android:background="@android:color/holo_blue_light"
+        android:text="Status"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idDescriptionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/existingRequest"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:layout_toEndOf="@id/idStatusView"
+        android:background="@android:color/holo_blue_light"
+        android:padding="5dp"
+        android:text="Request Description"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listServiceRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idtextView"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="10dp"
+        android:dividerHeight="1sp" />
+
+    <TextView
+        android:id="@+id/emptyRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@id/idtextView"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:text="No Service Request Raised available now"
+        android:textSize="25dp"/>
+
 
 </RelativeLayout>

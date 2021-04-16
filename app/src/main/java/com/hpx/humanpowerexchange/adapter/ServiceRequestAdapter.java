@@ -15,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.hpx.humanpowerexchange.AppController;
 import com.hpx.humanpowerexchange.R;
 import com.hpx.humanpowerexchange.ServiceRequestActivity;
+import com.hpx.humanpowerexchange.ServiceRequestEdit;
 import com.hpx.humanpowerexchange.restapi.dto.ServiceProviderDto;
 import com.hpx.humanpowerexchange.restapi.dto.ServiceRequestDto;
 
@@ -87,8 +88,8 @@ public class ServiceRequestAdapter extends BaseAdapter {
         serviceDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AppController.getInstance().getApplicationContext(), ServiceRequestActivity.class);
-                intent.putExtra("serviceRequestId", serviceRequestId.getText());
+                Intent intent = new Intent(AppController.getInstance().getApplicationContext(), ServiceRequestEdit.class);
+                intent.putExtra("requestId", serviceRequestId.getText());
                 activity.startActivity(intent);
             }
         });

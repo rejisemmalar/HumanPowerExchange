@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
@@ -49,6 +50,11 @@ public class UserDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
+
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor preferenceEditor =  preferences.edit();
+        preferenceEditor.putInt(HPX_USER_PAGE, USER_DETAILS_PAGE);
+        preferenceEditor.commit();
 
         String mobile="";
         Bundle extras = this.getIntent().getExtras();
