@@ -9,10 +9,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -40,7 +42,9 @@ import static com.hpx.humanpowerexchange.utils.UrlConstants.READ_SERVICE_REQUEST
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.UPDATE_USER_PAGE;
 
-public class ConsumerActivity extends AppCompatActivity {
+public class ConsumerActivity extends BaseActivity {
+
+    private static final int MENU3 = 1;
 
     private static final String TAG = ConsumerActivity.class.getSimpleName();
 
@@ -61,6 +65,8 @@ public class ConsumerActivity extends AppCompatActivity {
         SharedPreferences.Editor preferenceEditor =  preferences.edit();
         preferenceEditor.putInt(HPX_USER_PAGE, CONSUMER_PAGE);
         preferenceEditor.commit();
+
+
 
         listView = (ListView) findViewById(R.id.listServiceRequest);
         adapter = new ServiceRequestAdapter(this, serviceRequestList);
@@ -85,14 +91,7 @@ public class ConsumerActivity extends AppCompatActivity {
         changeToBeSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("mobile",finalMobile);
-                    jsonObject.put("user_page", SERVICE_PROVIDER_PAGE);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                AppController.getInstance().addToRequestQueue(updateUserPage(jsonObject));
+                AppController.getInstance().addToRequestQueue(updateUserPage(finalMobile, SERVICE_PROVIDER_PAGE));
                 Intent intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
                 intent.putExtra("mobile", finalMobile);
                 startActivity(intent);
@@ -170,25 +169,6 @@ public class ConsumerActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    public JsonObjectRequest updateUserPage(JSONObject jsonObject) {
-        return new JsonObjectRequest(UPDATE_USER_PAGE, jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }
-        );
-    }
 
 }

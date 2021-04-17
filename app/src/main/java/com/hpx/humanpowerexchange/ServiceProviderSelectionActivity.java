@@ -40,9 +40,8 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SAVE_USER_SERVICES;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
-import static com.hpx.humanpowerexchange.utils.UrlConstants.UPDATE_USER_PAGE;
 
-public class ServiceProviderSelectionActivity extends AppCompatActivity {
+public class ServiceProviderSelectionActivity extends BaseActivity {
 
     private static final String TAG = ServiceProviderSelectionActivity.class.getSimpleName();
 
@@ -109,14 +108,7 @@ public class ServiceProviderSelectionActivity extends AppCompatActivity {
         changeToBeConsumer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("mobile",finalMobile);
-                    jsonObject.put("user_page", CONSUMER_PAGE);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                AppController.getInstance().addToRequestQueue(updateUserPage(jsonObject));
+                AppController.getInstance().addToRequestQueue(updateUserPage(finalMobile, CONSUMER_PAGE));
                 Intent intent = new Intent(getApplicationContext(), ConsumerActivity.class);
                 intent.putExtra("mobile", finalMobile);
                 startActivity(intent);
@@ -177,23 +169,8 @@ public class ServiceProviderSelectionActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
-    public JsonObjectRequest updateUserPage(JSONObject jsonObject) {
-        return new JsonObjectRequest(UPDATE_USER_PAGE, jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }
-        );
     }
 
     public JsonObjectRequest saveServiceList(JSONObject jsonObject) {

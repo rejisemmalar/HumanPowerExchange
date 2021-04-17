@@ -39,7 +39,7 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_INPROGRESS;
 import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_OPEN;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
-public class ServiceRequestEdit extends AppCompatActivity {
+public class ServiceRequestEdit extends BaseActivity {
 
     private TextView requestIdView, statusText, consumerNameView, consumerMobileView, providerNameView, providerMobileView, serviceNameView, taskClosedView;
     private EditText editDescription;
@@ -262,7 +262,7 @@ public class ServiceRequestEdit extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(AppController.getInstance().getApplicationContext(), "Request Updated", Toast.LENGTH_SHORT).show();
-                startActivity(getNextActivity());
+                startActivity(getNextActivity(mobile, fromUserPage));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -272,19 +272,4 @@ public class ServiceRequestEdit extends AppCompatActivity {
         });
     }
 
-    public Intent getNextActivity() {
-        Intent intent;
-        switch (fromUserPage) {
-            case SERVICE_PROVIDER_PAGE:
-                intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
-                break;
-            case CONSUMER_PAGE:
-                intent = new Intent(getApplicationContext(), ConsumerActivity.class);
-                break;
-            default:
-                intent = new Intent(getApplicationContext(), this.getClass());
-        }
-        intent.putExtra("mobile", mobile);
-        return intent;
-    }
 }

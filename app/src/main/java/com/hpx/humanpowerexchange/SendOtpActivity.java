@@ -42,7 +42,7 @@ import java.nio.charset.StandardCharsets;
 
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 
-public class SendOtpActivity extends AppCompatActivity {
+public class SendOtpActivity extends BaseActivity {
 
     public static final String TAG = SendOtpActivity.class.getSimpleName();
 
