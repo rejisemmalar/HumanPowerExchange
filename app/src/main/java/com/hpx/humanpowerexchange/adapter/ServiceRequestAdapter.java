@@ -72,9 +72,15 @@ public class ServiceRequestAdapter extends BaseAdapter {
         String statusMessage;
         switch (serviceRequestDto.getStatus()) {
             case 2:
-                statusMessage = "inprogress";
+                statusMessage = "accepted";
                 break;
             case 3:
+                statusMessage = "inprogress";
+                break;
+            case 4:
+                statusMessage = "completed";
+                break;
+            case 5:
                 statusMessage = "closed";
                 break;
             default:

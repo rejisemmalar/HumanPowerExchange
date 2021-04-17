@@ -32,6 +32,11 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_ACCEPT;
+import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_CLOSED;
+import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_COMPLETED;
+import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_INPROGRESS;
+import static com.hpx.humanpowerexchange.utils.AppConstant.STATUS_OPEN;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
 public class ServiceRequestEdit extends AppCompatActivity {
@@ -74,11 +79,13 @@ public class ServiceRequestEdit extends AppCompatActivity {
 
         AppController.getInstance().addToRequestQueue(fillServiceRequestDetails(requestId, fromUserPage));
 
+        final int finalRequestId = requestId;
         serviceRequestSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 JSONObject jsonObject = new JSONObject();
                 try {
+                    jsonObject.put("id", finalRequestId);
                     jsonObject.put("description", editDescription.getText());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,11 +101,12 @@ public class ServiceRequestEdit extends AppCompatActivity {
             public void onClick(View view) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    if (finalFromUserPage == 2) {
+                    jsonObject.put("id", finalRequestId);
+                    if (finalFromUserPage == SERVICE_PROVIDER_PAGE) {
                         jsonObject.put("provider_mobile", finalMobile);
-                        jsonObject.put("status", 2);
-                    } else if (finalFromUserPage == 3) {
-                        jsonObject.put("status", 3);
+                        jsonObject.put("status", STATUS_ACCEPT);
+                    } else if (finalFromUserPage == CONSUMER_PAGE) {
+                        jsonObject.put("status", STATUS_INPROGRESS);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -112,7 +120,8 @@ public class ServiceRequestEdit extends AppCompatActivity {
             public void onClick(View view) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.put("status", 1);
+                    jsonObject.put("id", finalRequestId);
+                    jsonObject.put("status", STATUS_OPEN);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -125,7 +134,8 @@ public class ServiceRequestEdit extends AppCompatActivity {
             public void onClick(View view) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.put("status", 4);
+                    jsonObject.put("id", finalRequestId);
+                    jsonObject.put("status", STATUS_COMPLETED);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -143,10 +153,10 @@ public class ServiceRequestEdit extends AppCompatActivity {
                     requestIdView.setText(requestIdView.getText().toString().replace("@id@", String.valueOf(response.getInt("id"))));
                     int status = Integer.parseInt(response.getString("status"));
                     String statusMessage = "Open";
-                    if (status == 2) { statusMessage = "Accepted"; }
-                    else if (status == 3) { statusMessage = "Inprogress"; }
-                    else if (status == 4) { statusMessage = "Completed"; }
-                    else if (status == 5) { statusMessage = "Closed"; }
+                    if (status == STATUS_ACCEPT) { statusMessage = "Accepted"; }
+                    else if (status == STATUS_INPROGRESS) { statusMessage = "Inprogress"; }
+                    else if (status == STATUS_COMPLETED) { statusMessage = "Completed"; }
+                    else if (status == STATUS_CLOSED) { statusMessage = "Closed"; }
                     statusText.setText(statusMessage);
                     consumerNameView.setText(consumerNameView.getText().toString().replace("@consumerName@", response.getString("consumer_name")));
                     consumerMobileView.setText(consumerMobileView.getText().toString().replace("@consumerMobile@", response.getString("consumer_mobile")));
@@ -163,8 +173,8 @@ public class ServiceRequestEdit extends AppCompatActivity {
                     serviceNameView.setText(serviceNameView.getText().toString().replace("@serviceName@", response.getString("service_name")));
                     editDescription.setText(response.getString("description"));
 
-                    if (fromUserPage == 3) {
-                        if (status == 1) {
+                    if (fromUserPage == CONSUMER_PAGE) {
+                        if (status == STATUS_OPEN) {
                             editDescription.setEnabled(true);
                             serviceRequestSave.setEnabled(true);
                             serviceRequestSave.setVisibility(View.VISIBLE);
@@ -175,7 +185,7 @@ public class ServiceRequestEdit extends AppCompatActivity {
                             serviceRequestReject.setVisibility(View.INVISIBLE);
                             serviceRequestCompleted.setEnabled(false);
                             serviceRequestCompleted.setVisibility(View.INVISIBLE);
-                        } else if (status == 2) {
+                        } else if (status == STATUS_ACCEPT) {
                             editDescription.setEnabled(false);
                             serviceRequestSave.setEnabled(false);
                             serviceRequestSave.setVisibility(View.INVISIBLE);
@@ -186,7 +196,7 @@ public class ServiceRequestEdit extends AppCompatActivity {
                             serviceRequestReject.setVisibility(View.VISIBLE);
                             serviceRequestCompleted.setEnabled(false);
                             serviceRequestCompleted.setVisibility(View.INVISIBLE);
-                        } else if (status == 3) {
+                        } else if (status == STATUS_INPROGRESS) {
                             editDescription.setEnabled(false);
                             serviceRequestSave.setEnabled(false);
                             serviceRequestSave.setVisibility(View.INVISIBLE);
@@ -197,7 +207,7 @@ public class ServiceRequestEdit extends AppCompatActivity {
                             serviceRequestReject.setVisibility(View.INVISIBLE);
                             serviceRequestCompleted.setEnabled(true);
                             serviceRequestCompleted.setVisibility(View.VISIBLE);
-                        } else if (status == 4 || status == 5) {
+                        } else if (status == STATUS_COMPLETED || status == STATUS_CLOSED) {
                             editDescription.setEnabled(false);
                             serviceRequestSave.setEnabled(false);
                             serviceRequestSave.setVisibility(View.INVISIBLE);
@@ -212,7 +222,7 @@ public class ServiceRequestEdit extends AppCompatActivity {
                             taskClosedView.setVisibility(View.VISIBLE);
                         }
 
-                    } else if (fromUserPage == 2){
+                    } else if (fromUserPage == SERVICE_PROVIDER_PAGE){
                         editDescription.setEnabled(false);
                         serviceRequestSave.setEnabled(false);
                         serviceRequestSave.setVisibility(View.INVISIBLE);
@@ -223,15 +233,15 @@ public class ServiceRequestEdit extends AppCompatActivity {
                         serviceRequestCompleted.setEnabled(false);
                         serviceRequestCompleted.setVisibility(View.INVISIBLE);
 
-                        if (status == 1) {
+                        if (status == STATUS_OPEN) {
                             serviceRequestAccept.setEnabled(true);
                             serviceRequestAccept.setVisibility(View.VISIBLE);
-                        } else if (status == 2 || status == 3) {
+                        } else if (status == STATUS_ACCEPT || status == STATUS_INPROGRESS) {
                             serviceRequestAccept.setEnabled(false);
                             serviceRequestAccept.setVisibility(View.INVISIBLE);
                             taskClosedView.setVisibility(View.VISIBLE);
                             taskClosedView.setText("Request already accepted by a provider");
-                        }  else if (status == 4 || status == 5) {
+                        }  else if (status == STATUS_COMPLETED || status == STATUS_CLOSED) {
                             taskClosedView.setVisibility(View.VISIBLE);
                         }
                     }
