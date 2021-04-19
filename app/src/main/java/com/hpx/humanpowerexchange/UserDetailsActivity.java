@@ -35,10 +35,11 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
-public class UserDetailsActivity extends AppCompatActivity {
+public class UserDetailsActivity extends BaseActivity {
 
     public static final String TAG = UserDetailsActivity.class.getSimpleName();
 
+    private TextView mobileText;
     private EditText nameEdit, emailEdit;
     private EditText addressLine1Edit, addressLine2Edit, cityEdit, stateEdit, pincodeEdit, countryEdit;
     private Button saveDetails;
@@ -61,7 +62,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         if (extras != null) {
             mobile = extras.getString("mobile", "");
         }
-        TextView mobileText = findViewById(R.id.textMobile);
+        mobileText = findViewById(R.id.textMobile);
         mobileText.setText(mobile);
 
         saveDetails = findViewById(R.id.saveUserDetails);
@@ -74,8 +75,11 @@ public class UserDetailsActivity extends AppCompatActivity {
         emailEdit = findViewById(R.id.editEmail);
         addressLine2Edit = findViewById(R.id.line2edit);
 
+        checkRequiredFields();
+
         JsonObjectRequest jsonObjectRequest = fetchUserDetails(mobile);
         AppController.getInstance().addToRequestQueue(jsonObjectRequest, TAG);
+
 
         nameEdit.addTextChangedListener (new TextWatcher() {
             @Override
@@ -226,7 +230,7 @@ public class UserDetailsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 UserDto userDto = new Gson().fromJson(String.valueOf(response),UserDto.class);
                 if (userDto!= null && userDto.getId() > 0) {
-                    Intent intent = getNextActivity(userDto);
+                    Intent intent = getNextActivity(userDto.getMobile(), userDto.getUser_page());
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "There is some error in saving user details" , Toast.LENGTH_LONG).show();
@@ -242,28 +246,6 @@ public class UserDetailsActivity extends AppCompatActivity {
         });
     }
 
-    public Intent getNextActivity(UserDto userDto) {
-        Intent intent;
-        switch (userDto.getUser_page()) {
-            case USER_DETAILS_PAGE:
-                intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
-                break;
-            case SERVICE_PROVIDER_SELECTION_PAGE:
-                intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
-                break;
-            case SERVICE_PROVIDER_PAGE:
-                intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
-                break;
-            case CONSUMER_PAGE:
-                intent = new Intent(getApplicationContext(), ConsumerActivity.class);
-                break;
-            default:
-                intent = new Intent(getApplicationContext(), this.getClass());
-        }
-        intent.putExtra("mobile", userDto.getMobile());
-        return intent;
-    }
-
     public JsonObjectRequest fetchUserDetails(final String mobile) {
         String url = UrlConstants.READ_USER_BY_MOBILE + "?mobile="+mobile;
 
@@ -272,6 +254,7 @@ public class UserDetailsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 UserDto userDto = new Gson().fromJson(String.valueOf(response), UserDto.class);
                 nameEdit.setText(userDto.getName());
+                mobileText.setText(mobile);
                 emailEdit.setText(userDto.getEmail());
                 addressLine1Edit.setText(userDto.getAddress_line_1());
                 addressLine2Edit.setText(userDto.getAddress_line_2());

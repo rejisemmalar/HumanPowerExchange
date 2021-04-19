@@ -1,7 +1,9 @@
 package com.hpx.humanpowerexchange;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
@@ -19,7 +21,11 @@ import com.hpx.humanpowerexchange.utils.UrlConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
@@ -129,6 +135,16 @@ public class BaseActivity extends AppCompatActivity {
         }
         intent.putExtra("mobile", mobile);
         return intent;
+    }
+
+    public JSONObject getJsonWithMobile(String mobile) {
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("mobile", mobile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonBody;
     }
 
 }

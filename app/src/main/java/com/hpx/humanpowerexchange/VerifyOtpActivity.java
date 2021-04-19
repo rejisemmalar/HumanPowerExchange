@@ -39,7 +39,7 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
-public class VerifyOtpActivity extends AppCompatActivity {
+public class VerifyOtpActivity extends BaseActivity {
 
     public static final String TAG = VerifyOtpActivity.class.getSimpleName();
 
@@ -53,11 +53,9 @@ public class VerifyOtpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verify_otp);
 
         String mobile="";
-        String otp="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
             mobile = extras.getString("mobile", "");
-            otp = extras.getString("otp", "");
         }
         textView = findViewById(R.id.verifiedTextView);
 
@@ -68,13 +66,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
         otp_textbox_five = findViewById(R.id.otp_edit_box5);
         otp_textbox_six = findViewById(R.id.otp_edit_box6);
         verify_otp = findViewById(R.id.verify_otp_btn);
-
-        otp_textbox_one.setText(otp.substring(0,1));
-        otp_textbox_two.setText(otp.substring(1,2));
-        otp_textbox_three.setText(otp.substring(2,3));
-        otp_textbox_four.setText(otp.substring(3,4));
-        otp_textbox_five.setText(otp.substring(4,5));
-        otp_textbox_six.setText(otp.substring(5,6));
 
         startSMSListener();
 
@@ -115,6 +106,15 @@ public class VerifyOtpActivity extends AppCompatActivity {
             }
         }, 30*1000);
 
+    }
+
+    private void setOtpToTextBoxes(String otp) {
+        otp_textbox_one.setText(otp.substring(0,1));
+        otp_textbox_two.setText(otp.substring(1,2));
+        otp_textbox_three.setText(otp.substring(2,3));
+        otp_textbox_four.setText(otp.substring(3,4));
+        otp_textbox_five.setText(otp.substring(4,5));
+        otp_textbox_six.setText(otp.substring(5,6));
     }
 
     private void startSMSListener() {
@@ -171,7 +171,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                             preferenceEditor.putBoolean(HPX_USER_VERIFIED, true);
                             preferenceEditor.putString(HPX_MOBILE_ID, mobile);
                             preferenceEditor.commit();
-                            startActivity(getNextActivity(new UserDto().setUser_page(userPageId)));
+                            startActivity(getNextActivity(mobile, userPageId));
                         } else {
                             textView.setText("Otp verified UnSuccessful");
                             textView.setVisibility(View.VISIBLE);
@@ -197,25 +197,4 @@ public class VerifyOtpActivity extends AppCompatActivity {
         return jsonObjectRequest;
     }
 
-    public Intent getNextActivity(UserDto userDto) {
-        Intent intent;
-        switch (userDto.getUser_page()) {
-            case USER_DETAILS_PAGE:
-                intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
-                break;
-            case SERVICE_PROVIDER_SELECTION_PAGE:
-                intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
-                break;
-            case SERVICE_PROVIDER_PAGE:
-                intent = new Intent(getApplicationContext(), ServiceProviderActivity.class);
-                break;
-            case CONSUMER_PAGE:
-                intent = new Intent(getApplicationContext(), ConsumerActivity.class);
-                break;
-            default:
-                intent = new Intent(getApplicationContext(), this.getClass());
-        }
-        intent.putExtra("mobile", userDto.getMobile());
-        return intent;
-    }
 }
