@@ -1,7 +1,5 @@
 package com.hpx.humanpowerexchange;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.hpx.humanpowerexchange.restapi.dto.UserDto;
 import com.hpx.humanpowerexchange.utils.UrlConstants;
 
@@ -27,12 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
-import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
-import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
-import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
-import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
-import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
 public class UserDetailsActivity extends BaseActivity {
@@ -213,6 +206,14 @@ public class UserDetailsActivity extends BaseActivity {
                 AppController.getInstance().addToRequestQueue(jsonObjectRequest, TAG);
             }
         });
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu1).setVisible(false);
+        menu.findItem(R.id.menu2).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
+        return true;
     }
 
     private void checkRequiredFields() {

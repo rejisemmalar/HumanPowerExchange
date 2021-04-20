@@ -56,10 +56,11 @@ public class SendOtpActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otp);
-        enableDisableSendOtpButton();
+
         txtView = (EditText) findViewById(R.id.editTextPhone);
         button = findViewById(R.id.button2);
         phoneSelection();
+        enableDisableSendOtpButton();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,31 +1,22 @@
 package com.hpx.humanpowerexchange;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
 import com.hpx.humanpowerexchange.adapter.ServiceProviderSelectionAdapter;
 import com.hpx.humanpowerexchange.restapi.dto.ServiceProviderDto;
-import com.hpx.humanpowerexchange.restapi.dto.UserDto;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,11 +36,12 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
 
     private static final String TAG = ServiceProviderSelectionActivity.class.getSimpleName();
 
-    private ProgressDialog pDialog;
 
     private List<ServiceProviderDto> serviceList = new ArrayList();
     private ListView listView;
     private ServiceProviderSelectionAdapter adapter;
+
+    private String mobile="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +57,8 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
         adapter = new ServiceProviderSelectionAdapter(this, serviceList);
         listView.setAdapter(adapter);
 
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
+       showProgressDialog("Loading...");
 
-        // Creating volley request obj
-        String mobile="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
             mobile = extras.getString("mobile", "");
@@ -117,6 +104,25 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu1).setVisible(true);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        String title = String.valueOf(item.getTitle());
+        if ("Edit User Details".equalsIgnoreCase(title)) {
+            Intent intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
+        }
+        return true;
+    }
+
     public JsonObjectRequest fillServiceList(final String mobile) {
         String url = SERVICES_FOR_USER + "?mobile="+mobile;
         return new JsonObjectRequest(url, null,
@@ -154,24 +160,7 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
         }
         );
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
-    }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     public JsonObjectRequest saveServiceList(JSONObject jsonObject) {
         return new JsonObjectRequest(SAVE_USER_SERVICES, jsonObject,

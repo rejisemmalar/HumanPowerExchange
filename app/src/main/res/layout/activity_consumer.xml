@@ -17,7 +17,7 @@
         android:layout_marginEnd="40dp"
         android:padding="10dp"
         android:text="Consumer Activity"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <Button
@@ -30,6 +30,7 @@
         android:enabled="true"
         android:padding="5dp"
         android:text="Service Provider"
+        android:textStyle="italic"
         android:textColor="@color/Black"
         android:background="@color/skyblue"
         android:layout_alignParentEnd="true"/>
@@ -130,3 +131,7 @@
         android:textSize="25dp"/>
 
 </RelativeLayout>
+
+
+
+

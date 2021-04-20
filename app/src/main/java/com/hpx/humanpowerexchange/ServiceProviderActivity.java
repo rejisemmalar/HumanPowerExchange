@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -42,12 +43,10 @@ public class ServiceProviderActivity extends BaseActivity {
 
     private static final String TAG = ServiceProviderActivity.class.getSimpleName();
 
-    private ProgressDialog pDialog;
-
     private List<ServiceRequestDto> serviceRequestList = new ArrayList();
     private ListView listView;
     private ServiceRequestAdapter adapter;
-
+    private String mobile = "";
     private TextView emptyRequest;
 
     @Override
@@ -65,11 +64,8 @@ public class ServiceProviderActivity extends BaseActivity {
         listView.setAdapter(adapter);
         emptyRequest = findViewById(R.id.emptyRequest);
 
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
+        showProgressDialog("Loading...");
 
-        String mobile="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
             mobile = extras.getString("mobile", "");
@@ -90,15 +86,38 @@ public class ServiceProviderActivity extends BaseActivity {
         });
     }
 
-    public JsonObjectRequest fillServiceRequestList(final String mobile) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("mobile", mobile);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-        return new JsonObjectRequest(READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER, jsonObject,
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu1).setVisible(true);
+        menu.findItem(R.id.menu2).setVisible(true);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        String title = String.valueOf(item.getTitle());
+        if ("Edit User Details".equalsIgnoreCase(title)) {
+            Intent intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
+        } else if ("Service Provision Select".equalsIgnoreCase(title)) {
+            Intent intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
+        }
+        return true;
+    }
+
+    public JsonObjectRequest fillServiceRequestList(final String mobile) {
+
+        return new JsonObjectRequest(READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER, getJsonWithMobile(mobile),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -106,9 +125,7 @@ public class ServiceProviderActivity extends BaseActivity {
                         hidePDialog();
                         JSONArray serviceIds = response.optJSONArray("serviceIds");
                         if (serviceIds == null || serviceIds.length() <= 0) {
-                            pDialog = new ProgressDialog(getApplicationContext());
-                            pDialog.setMessage("No service option given. First select the services you can provide.");
-                            pDialog.show();
+                            showProgressDialog("No service option given. First select the services you can provide.");
                             Intent intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
                             intent.putExtra("mobile", mobile);
                             startActivity(intent);
@@ -116,6 +133,7 @@ public class ServiceProviderActivity extends BaseActivity {
                             JSONArray serviceRequests = response.optJSONArray("service_requests");
                             // Parsing json
                             if (serviceRequests != null && serviceRequests.length() > 0) {
+                                hidePDialog();
                                 for (int i = 0; i < serviceRequests.length(); i++) {
                                     emptyRequest.setVisibility(View.INVISIBLE);
                                     try {
@@ -145,17 +163,5 @@ public class ServiceProviderActivity extends BaseActivity {
         );
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
 
 }

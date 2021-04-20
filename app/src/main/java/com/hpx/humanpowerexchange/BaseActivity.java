@@ -2,13 +2,17 @@ package com.hpx.humanpowerexchange;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Response;
@@ -53,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
         hidePDialog();
     }
 
-    private void hidePDialog() {
+    void hidePDialog() {
         if (pDialog != null) {
             pDialog.dismiss();
             pDialog = null;
@@ -62,20 +66,11 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu1:
-                Toast.makeText(this, "Clicked: Menu No. 1", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu2:
-                Toast.makeText(this, "Clicked: Menu No. 2", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu3:
-                Toast.makeText(this, "Clicked: Menu No. 2", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        String title = String.valueOf(item.getTitle());
+        if ("About Us".equalsIgnoreCase(title)) {
+            alertDialog();
         }
-
+        return true;
     }
 
     public JsonObjectRequest updateUserPage(String finalMobile, int userPageId) {
@@ -147,4 +142,14 @@ public class BaseActivity extends AppCompatActivity {
         return jsonBody;
     }
 
+    private void alertDialog() {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setMessage("Thanks for downloading our app. " +
+                "\n\n" + "We are trying to unite all people who need something to be done and the same can be done by another person." +
+                "\n\n" + "We need all of your support and If you face any issues feel free to contact rejisemmalar99@gmail.com.");
+        dialog.setTitle("About Us");
+        dialog.setPositiveButton("OK", null);
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
+    }
 }

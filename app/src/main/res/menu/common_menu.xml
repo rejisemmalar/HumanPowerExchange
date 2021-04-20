@@ -3,10 +3,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menu1"
-        android:title="Edit User Details"/>
+        android:title="@string/edit_user_details"
+        android:visible="false"/>
     <item android:id="@+id/menu2"
-        android:title="Service Provision Select"/>
+        android:title="@string/service_provision_select"
+        android:visible="false"/>
     <item android:id="@+id/menu3"
-        android:title="About us"/>
+        android:title="@string/about_us"/>
 
 </menu>
