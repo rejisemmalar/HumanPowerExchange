@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,16 +39,14 @@ import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE
 import static com.hpx.humanpowerexchange.utils.UrlConstants.READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.UPDATE_USER_PAGE;
 
-public class ServiceProviderActivity extends AppCompatActivity {
+public class ServiceProviderActivity extends BaseActivity {
 
     private static final String TAG = ServiceProviderActivity.class.getSimpleName();
-
-    private ProgressDialog pDialog;
 
     private List<ServiceRequestDto> serviceRequestList = new ArrayList();
     private ListView listView;
     private ServiceRequestAdapter adapter;
-
+    private String mobile = "";
     private TextView emptyRequest;
 
     @Override
@@ -65,11 +64,8 @@ public class ServiceProviderActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         emptyRequest = findViewById(R.id.emptyRequest);
 
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
+        showProgressDialog("Loading...");
 
-        String mobile="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
             mobile = extras.getString("mobile", "");
@@ -82,14 +78,7 @@ public class ServiceProviderActivity extends AppCompatActivity {
         changeToConsumer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("mobile",finalMobile);
-                    jsonObject.put("user_page", CONSUMER_PAGE);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                AppController.getInstance().addToRequestQueue(updateUserPage(jsonObject));
+                AppController.getInstance().addToRequestQueue(updateUserPage(finalMobile, CONSUMER_PAGE));
                 Intent intent = new Intent(getApplicationContext(), ConsumerActivity.class);
                 intent.putExtra("mobile", finalMobile);
                 startActivity(intent);
@@ -98,62 +87,37 @@ public class ServiceProviderActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu1).setVisible(true);
+        menu.findItem(R.id.menu2).setVisible(true);
+        super.onPrepareOptionsMenu(menu);
         return true;
     }
 
-    /*public JsonObjectRequest getServiceList(final String mobile) {
-        String url = SERVICES_FOR_USER + "?mobile="+mobile;
-        return new JsonObjectRequest(url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, response.toString());
-
-                        JSONArray services = response.optJSONArray("services");
-                        // Parsing json
-                        if (services != null && services.length() > 0) {
-                            for (int i = 0; i < services.length(); i++) {
-                                try {
-                                    JSONObject obj = services.getJSONObject(i);
-                                    if (obj.getBoolean("selected")) {
-                                        serviceList.add(obj.getInt("id"));
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                        if (serviceList.isEmpty()) {
-                            pDialog.setMessage("No service option given. First select the services you can provide.");
-                            pDialog.show();
-                            Intent intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
-                            intent.putExtra("mobile", mobile);
-                            startActivity(intent);
-                        }
-                        hidePDialog();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                hidePDialog();
-            }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        String title = String.valueOf(item.getTitle());
+        if ("Edit User Details".equalsIgnoreCase(title)) {
+            Intent intent = new Intent(getApplicationContext(), UserDetailsActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
+        } else if ("Service Provision Select".equalsIgnoreCase(title)) {
+            Intent intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
         }
-        );
-    }*/
+        return true;
+    }
 
     public JsonObjectRequest fillServiceRequestList(final String mobile) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("mobile", mobile);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
-        return new JsonObjectRequest(READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER, jsonObject,
+        return new JsonObjectRequest(READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER, getJsonWithMobile(mobile),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -161,9 +125,7 @@ public class ServiceProviderActivity extends AppCompatActivity {
                         hidePDialog();
                         JSONArray serviceIds = response.optJSONArray("serviceIds");
                         if (serviceIds == null || serviceIds.length() <= 0) {
-                            pDialog = new ProgressDialog(getApplicationContext());
-                            pDialog.setMessage("No service option given. First select the services you can provide.");
-                            pDialog.show();
+                            showProgressDialog("No service option given. First select the services you can provide.");
                             Intent intent = new Intent(getApplicationContext(), ServiceProviderSelectionActivity.class);
                             intent.putExtra("mobile", mobile);
                             startActivity(intent);
@@ -171,6 +133,7 @@ public class ServiceProviderActivity extends AppCompatActivity {
                             JSONArray serviceRequests = response.optJSONArray("service_requests");
                             // Parsing json
                             if (serviceRequests != null && serviceRequests.length() > 0) {
+                                hidePDialog();
                                 for (int i = 0; i < serviceRequests.length(); i++) {
                                     emptyRequest.setVisibility(View.INVISIBLE);
                                     try {
@@ -200,48 +163,5 @@ public class ServiceProviderActivity extends AppCompatActivity {
         );
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
-    }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
-
-
-    public JsonObjectRequest updateUserPage(JSONObject jsonObject) {
-        return new JsonObjectRequest(UPDATE_USER_PAGE, jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }
-        );
-    }
-
-    /*public JsonObjectRequest fetchUserDetails(final String mobile) {
-        String url = UrlConstants.READ_USER_BY_MOBILE + "?mobile="+mobile;
-
-        return new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                UserDto userDto = new Gson().fromJson(String.valueOf(response), UserDto.class);
-                userCity = userDto.getCity();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-    }*/
 }

@@ -42,7 +42,7 @@ import java.nio.charset.StandardCharsets;
 
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 
-public class SendOtpActivity extends AppCompatActivity {
+public class SendOtpActivity extends BaseActivity {
 
     public static final String TAG = SendOtpActivity.class.getSimpleName();
 
@@ -50,29 +50,23 @@ public class SendOtpActivity extends AppCompatActivity {
     private TextView txtView;
     private Button button;
 
-    private String button_pick_number = "Pick the Number";
-    private String button_send_otp = "Send Otp";
     private String otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otp);
-        // enableDisableSendOtpButton();
+
         txtView = (EditText) findViewById(R.id.editTextPhone);
         button = findViewById(R.id.button2);
+        phoneSelection();
+        enableDisableSendOtpButton();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (button.getText().equals(button_pick_number)) {
-                    phoneSelection();
-                } else if (button.getText().equals(button_send_otp)) {
-                    String mobile = txtView.getText().toString();
-                    AppController.getInstance().addToRequestQueue(sendOtp(mobile), TAG);
-
-
-                }
+                String mobile = txtView.getText().toString();
+                AppController.getInstance().addToRequestQueue(sendOtp(mobile), TAG);
             }
         });
     }
@@ -95,7 +89,6 @@ public class SendOtpActivity extends AppCompatActivity {
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
         }
-
     }
 
     // Obtain the phone number from the result
@@ -105,42 +98,32 @@ public class SendOtpActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == RESULT_OK) {
             Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
-            // credential.getId();  <-- will need to process phone number string
             if (credential != null) {
                 txtView.setText(credential.getId());
-                button.setText(button_send_otp);
                 enableDisableSendOtpButton();
             }
         } else if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE) {
             Toast.makeText(this, "No phone numbers found", Toast.LENGTH_LONG).show();
             txtView.setHint("Number not found. Type the number");
-            button.setText(button_send_otp);
             button.setEnabled(false);
             enableDisableSendOtpButton();
-
         }
     }
 
     public void enableDisableSendOtpButton() {
         txtView.addTextChangedListener(new TextWatcher(){
-
-            // Before EditText text change.
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() != 10) {
                     button.setEnabled(false);
                 }
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() == 10) {
                     button.setEnabled(true);
                 } else {
                     button.setEnabled(false);
-                }
-                if (button.getText().equals(button_pick_number)) {
-                    button.setText(button_send_otp);
                 }
             }
 
@@ -154,13 +137,7 @@ public class SendOtpActivity extends AppCompatActivity {
     }
 
     public JsonObjectRequest sendOtp(final String mobile) {
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("mobile", mobile);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return new JsonObjectRequest(UrlConstants.SEND_OTP_URL, jsonBody,
+        return new JsonObjectRequest(UrlConstants.SEND_OTP_URL, getJsonWithMobile(mobile),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
