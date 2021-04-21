@@ -1,16 +1,9 @@
 package com.hpx.humanpowerexchange;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +18,7 @@ import com.hpx.humanpowerexchange.utils.UrlConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
-import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
-import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_ID;
-import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
