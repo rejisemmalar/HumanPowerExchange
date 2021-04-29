@@ -16,9 +16,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="serif"
         android:padding="5dp"
         android:text="@string/please_edit_your_details"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <ScrollView android:layout_marginTop="10dp"
@@ -36,16 +38,19 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/usernameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/name"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -69,11 +74,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/mobile"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <TextView
@@ -95,11 +102,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/email"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -123,11 +132,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/Address"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <TextView
@@ -138,11 +149,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/line1"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -166,11 +179,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/line2"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -194,11 +209,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/city"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -222,11 +239,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/enterState"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -250,11 +269,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/pincode"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -278,11 +299,13 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:text="@string/country"
                     android:textAlignment="center"
+                    android:textColor="@color/Black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -308,9 +331,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="20dp"
-        android:padding="15dp"
+        android:layout_marginBottom="10dp"
         android:enabled="false"
-        android:text="@string/save_details" />
+        android:fontFamily="serif"
+        android:padding="15dp"
+        android:text="@string/save_details"
+        android:background="@color/skyblue"
+        android:textColor="@color/Black" />
 </RelativeLayout>

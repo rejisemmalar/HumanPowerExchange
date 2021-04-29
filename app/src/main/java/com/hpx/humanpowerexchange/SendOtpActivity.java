@@ -50,8 +50,6 @@ public class SendOtpActivity extends BaseActivity {
     private TextView txtView;
     private Button button;
 
-    private String otp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +97,14 @@ public class SendOtpActivity extends BaseActivity {
         if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == RESULT_OK) {
             Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
             if (credential != null) {
-                txtView.setText(credential.getId());
+                String phoneNumber = credential.getId();
+                String mobileText = phoneNumber;
+                if (phoneNumber.length() == 13 && phoneNumber.substring(0,3).equals("+91")) {
+                    mobileText = phoneNumber.substring(3,13);
+                } else if (phoneNumber.length() == 11 && phoneNumber.substring(0,1).equals("0")) {
+                    mobileText = phoneNumber.substring(1,11);
+                }
+                txtView.setText(mobileText);
                 enableDisableSendOtpButton();
             }
         } else if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE) {
@@ -144,15 +149,9 @@ public class SendOtpActivity extends BaseActivity {
                         Log.d(TAG, response.toString());
                         Toast.makeText(AppController.getInstance().getApplicationContext(), "Otp send to your mobile number: "+ mobile + " we will read and verify it quickly" , Toast.LENGTH_LONG).show();
 
-                        try {
-                            otp = response.getString("otp");
-                            Intent i = new Intent(getApplicationContext(), VerifyOtpActivity.class);
-                            i.putExtra("mobile", mobile);
-                            i.putExtra("otp", otp);
-                            startActivity(i);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        Intent i = new Intent(getApplicationContext(), VerifyOtpActivity.class);
+                        i.putExtra("mobile", mobile);
+                        startActivity(i);
                     }
                 }, new Response.ErrorListener() {
             @Override

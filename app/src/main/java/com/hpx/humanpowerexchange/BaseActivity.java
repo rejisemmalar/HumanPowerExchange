@@ -56,6 +56,9 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         String title = String.valueOf(item.getTitle());
+        if ("Profile Pic".equalsIgnoreCase(title)) {
+
+        }
         if ("About Us".equalsIgnoreCase(title)) {
             alertDialog();
         }

@@ -8,20 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.hpx.humanpowerexchange.AppController;
 import com.hpx.humanpowerexchange.R;
-import com.hpx.humanpowerexchange.ServiceRequestActivity;
 import com.hpx.humanpowerexchange.ServiceRequestEdit;
-import com.hpx.humanpowerexchange.restapi.dto.ServiceProviderDto;
 import com.hpx.humanpowerexchange.restapi.dto.ServiceRequestDto;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ServiceRequestAdapter extends BaseAdapter {
     private Activity activity;
@@ -65,7 +60,6 @@ public class ServiceRequestAdapter extends BaseAdapter {
         final TextView serviceRequestStatus = convertView.findViewById(R.id.serviceRequestStatus);
         Button serviceDescription = convertView.findViewById(R.id.serviceRequestDetail);
 
-        System.out.println("The serice request size - "+ getCount());
         // getting model data for the row
         ServiceRequestDto serviceRequestDto = serviceRequestDtos.get(position);
         serviceRequestId.setText(String.valueOf(serviceRequestDto.getId()));
