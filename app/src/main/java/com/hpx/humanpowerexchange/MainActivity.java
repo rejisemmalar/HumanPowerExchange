@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import static com.hpx.humanpowerexchange.LocaleHelper.setLocale;
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 
 public class MainActivity extends BaseActivity {
@@ -23,7 +25,9 @@ public class MainActivity extends BaseActivity {
         SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
         boolean verifiedUser = preferences.getBoolean(HPX_USER_VERIFIED, false);
         String mobile = preferences.getString(HPX_MOBILE_ID, "" );
-        String userId = preferences.getString(HPX_USER_ID, "" );
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en" );
+
+        setLocale(this.getApplicationContext(), language);
 
         if (verifiedUser) {
             AppController.getInstance().addToRequestQueue(switchToUserPage(mobile), TAG);
