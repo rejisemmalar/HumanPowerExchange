@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 
@@ -32,12 +33,12 @@ public class UserDetailsActivity extends BaseActivity {
 
     public static final String TAG = UserDetailsActivity.class.getSimpleName();
 
-    private TextView mobileText;
     private EditText nameEdit, emailEdit;
     private EditText addressLine1Edit, addressLine2Edit, cityEdit, stateEdit, pincodeEdit, countryEdit;
     private Button saveDetails;
 
     private boolean nameFilled, line1Filled, cityFilled, stateFilled, pincodeFilled, countryFilled;
+    private TextView headingText, nameText, mobileText, mobiletextHead, emailText, addressText, line1Text, line2Text, cityText, stateText, pincodeText, countryText;
 
 
     @Override
@@ -49,6 +50,21 @@ public class UserDetailsActivity extends BaseActivity {
         SharedPreferences.Editor preferenceEditor =  preferences.edit();
         preferenceEditor.putInt(HPX_USER_PAGE, USER_DETAILS_PAGE);
         preferenceEditor.commit();
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en" );
+
+        if (language.equalsIgnoreCase("ta")) {
+            ((TextView)findViewById(R.id.textUDView)).setText("உங்கள் விவரங்களைத் திருத்தவும்");
+            ((TextView)findViewById(R.id.usernameText)).setText("*பெயர்:");
+            ((TextView)findViewById(R.id.mobile)).setText("கைபேசி எண்:");
+            ((TextView)findViewById(R.id.emailText)).setText("மின்னஞ்சல்:");
+            ((TextView)findViewById(R.id.addressText)).setText("முகவரி:");
+            ((TextView)findViewById(R.id.addressLine1Text)).setText("*வரி1:");
+            ((TextView)findViewById(R.id.addressLine2Text)).setText("வரி2:");
+            ((TextView)findViewById(R.id.cityText)).setText("*நகரம்:");
+            ((TextView)findViewById(R.id.stateText)).setText("*மாநிலம்:");
+            ((TextView)findViewById(R.id.pincodeText)).setText("*அஞ்சல் குறியீடு:");
+            ((TextView)findViewById(R.id.countryText)).setText("*நாடு:");
+        }
 
         String mobile="";
         Bundle extras = this.getIntent().getExtras();
@@ -219,8 +235,10 @@ public class UserDetailsActivity extends BaseActivity {
     private void checkRequiredFields() {
         if (nameFilled && line1Filled && cityFilled && stateFilled && pincodeFilled && countryFilled) {
             saveDetails.setEnabled(true);
+            saveDetails.setClickable(true);
         } else {
             saveDetails.setEnabled(false);
+            saveDetails.setClickable(false);
         }
     }
 

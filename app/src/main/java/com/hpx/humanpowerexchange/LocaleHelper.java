@@ -1,6 +1,7 @@
 package com.hpx.humanpowerexchange;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -9,13 +10,18 @@ import android.preference.PreferenceManager;
 
 import java.util.Locale;
 
+import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 
-public class LocaleHelper {
+public class LocaleHelper extends ContextWrapper {
+
+    public LocaleHelper(Context base) {
+        super(base);
+    }
 
     // the method is used to set the language at runtime
-    public static Context setLocale(Context context, String language) {
-        persist(context, language);
+    public static  Context setLocale(Context context, String language) {
+        //persist(context, language);
 
         // updating the language for devices above android nougat
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -25,12 +31,12 @@ public class LocaleHelper {
         return updateResourcesLegacy(context, language);
     }
 
-    private static void persist(Context context, String language) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    /*private void persist(Context context, String language) {
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(HPX_USER_LANGUAGE, language);
         editor.apply();
-    }
+    }*/
 
     // the method is used update the language of application by creating
     // object of inbuilt Locale class and passing language argument to it

@@ -25,9 +25,6 @@ public class MainActivity extends BaseActivity {
         SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
         boolean verifiedUser = preferences.getBoolean(HPX_USER_VERIFIED, false);
         String mobile = preferences.getString(HPX_MOBILE_ID, "" );
-        String language = preferences.getString(HPX_USER_LANGUAGE, "en" );
-
-        setLocale(this.getApplicationContext(), language);
 
         if (verifiedUser) {
             AppController.getInstance().addToRequestQueue(switchToUserPage(mobile), TAG);
