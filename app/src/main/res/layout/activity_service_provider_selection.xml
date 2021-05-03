@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServiceProviderSelectionActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="serif"
+        android:padding="5dp"
+        android:text="Select the Services you can provide \n or Else click to be a consumer"
+        android:textColor="@color/green"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/changeToBeConsumer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@id/textView"
+        android:background="@color/skyblue"
+        android:enabled="true"
+        android:fontFamily="serif"
+        android:padding="3dp"
+        android:text="Be a Consumer"
+        android:textColor="@color/Black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:dividerHeight="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:padding="5dp"
+            android:enabled="true"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/Black"
+            android:fontFamily="serif"
+            android:background="@color/colorAccent"
+            android:text="save" />
+    </LinearLayout>
+
+
+</RelativeLayout>

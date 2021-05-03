@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/img_profile"
+        android:icon="@drawable/baseline_account_circle_black_48"
+        android:title="Profile Pic"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Settings, should always be in the overflow
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/> -->
+
+    <item android:id="@+id/menu1"
+        android:title="@string/edit_user_details"
+        android:visible="false"/>
+    <item android:id="@+id/menu2"
+        android:title="@string/service_provision_select"
+        android:visible="false"/>
+    <item android:id="@+id/lang"
+        android:title="@string/language_change"/>
+    <item android:id="@+id/menu3"
+        android:title="@string/about_us"/>
+
+</menu>
