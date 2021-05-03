@@ -61,6 +61,9 @@ public class BaseActivity extends AppCompatActivity {
         }
         if ("About Us".equalsIgnoreCase(title)) {
             alertDialog();
+        } else if ("Select Language".equalsIgnoreCase(title)) {
+            Intent i = new Intent(getApplicationContext(), LangugaeSelectionActivity.class);
+            startActivity(i);
         }
         return true;
     }

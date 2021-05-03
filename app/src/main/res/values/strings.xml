@@ -28,6 +28,7 @@
     <string name="save_details">Save</string>
     <string name="edit_user_details" translatable="false">Edit User Details</string>
     <string name="service_provision_select" translatable="false">Service Provision Select</string>
+    <string name="language_change" translatable="false">Select Language</string>
     <string name="about_us" translatable="false">About us</string>
 
     <string name="action_settings" translatable="false">Settings</string>

@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AudioRecorderActivity" />
+        <activity android:name=".LangugaeSelectionActivity"></activity>
         <activity android:name=".BaseActivity" />
         <activity android:name=".ServiceRequestEdit" />
         <activity android:name=".ServiceRequestActivity" />
