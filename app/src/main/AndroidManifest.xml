@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".LangugaeSelectionActivity"></activity>
+        <activity android:name=".BaseActivity" />
         <activity android:name=".ServiceRequestEdit" />
         <activity android:name=".ServiceRequestActivity" />
         <activity android:name=".ServiceProviderSelectionActivity" />

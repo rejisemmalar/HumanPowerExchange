@@ -18,6 +18,7 @@ public class AppConstant {
     public static final String HPX_USER_ID = "hpxUserId";
     public static final String HPX_MOBILE_ID = "hpxMobileId";
     public static final String HPX_USER_PAGE = "hpxUserPageId";
+    public static final String HPX_USER_LANGUAGE = "hpxUserLanguage";
 
 
 }

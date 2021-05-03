@@ -7,7 +7,7 @@
     tools:context=".UserDetailsActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textUDView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
+        android:layout_below="@id/textUDView"
         android:layout_above="@id/saveUserDetails"
         android:id="@+id/scrollView">
 
@@ -81,7 +81,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editName"
-                    android:layout_marginStart="100dp"
+                    android:layout_toEndOf="@id/mobile"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:padding="5dp"
@@ -107,8 +108,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mobile"
+                    android:layout_toEndOf="@id/emailText"
                     android:layout_alignBottom="@+id/emailText"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:padding="5dp"
@@ -262,8 +264,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/stateEdit"
+                    android:layout_toEndOf="@id/pincodeText"
                     android:layout_alignBottom="@id/pincodeText"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:padding="5dp"

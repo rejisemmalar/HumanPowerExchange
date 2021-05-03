@@ -58,6 +58,9 @@ public class BaseActivity extends AppCompatActivity {
         String title = String.valueOf(item.getTitle());
         if ("About Us".equalsIgnoreCase(title)) {
             alertDialog();
+        } else if ("Select Language".equalsIgnoreCase(title)) {
+            Intent i = new Intent(getApplicationContext(), LangugaeSelectionActivity.class);
+            startActivity(i);
         }
         return true;
     }
