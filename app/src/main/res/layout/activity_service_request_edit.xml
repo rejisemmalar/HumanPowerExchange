@@ -15,9 +15,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="serif"
         android:padding="5dp"
         android:text="RequestId: @id@"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -27,6 +29,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@id/statusText"
+        android:fontFamily="serif"
         android:padding="5dp"
         android:text="Status:-"
         android:textAlignment="center"
@@ -54,9 +57,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="serif"
         android:paddingLeft="5dp"
         android:text="ConsumerName: @consumerName@"
         android:textAlignment="textStart"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -68,9 +73,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="serif"
         android:paddingLeft="5dp"
         android:text="ConsumerMobile: @consumerMobile@"
         android:textAlignment="textStart"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -82,9 +89,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="serif"
         android:paddingLeft="5dp"
         android:text="ProviderName: @providerName@"
         android:textAlignment="textStart"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -96,9 +105,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="serif"
         android:paddingLeft="5dp"
         android:text="ProviderMobile: @providerMobile@"
         android:textAlignment="textStart"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -110,9 +121,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="serif"
         android:paddingLeft="5dp"
         android:text="ServiceName: @serviceName@"
         android:textAlignment="textStart"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <TextView
@@ -124,9 +137,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="serif"
         android:padding="5dp"
         android:text="Request Description:"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         android:textSize="18sp" />
 
     <EditText
@@ -137,9 +152,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/description_button"
+        android:fontFamily="serif"
         android:gravity="top"
-        android:inputType="none"
-        android:hint="Enter the service Request Description" />
+        android:hint="Enter the service Request Description"
+        android:inputType="none" />
 
     <Button
         android:id="@+id/serviceRequestSave"

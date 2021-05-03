@@ -22,6 +22,7 @@ public class UrlConstants {
     public static final String READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER = SERVER_DOMAIN + "/api/service-request/read_for_service_provider.php";
     public static final String CREATE_SERVICE_REQUEST = SERVER_DOMAIN + "/api/service-request/create.php";
     public static final String UPDATE_SERVICE_REQUEST = SERVER_DOMAIN + "/api/service-request/update.php";
+    public static final String UPLOAD_FILES_SERVICE_REQUEST = SERVER_DOMAIN + "/api/service-request/upload_files.php";
 
 
 

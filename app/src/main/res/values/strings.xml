@@ -31,4 +31,27 @@
     <string name="language_change" translatable="false">Select Language</string>
     <string name="about_us" translatable="false">About us</string>
 
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="profile_desc" translatable="false">Rowan Sebastian Atkinson CBE is an English actor,  comedian and screenwriter</string>
+    <string name="profile_title" translatable="false">Mr Bean</string>
+    <string name="posts" translatable="false">posts</string>
+    <string name="followers" translatable="false">followers</string>
+    <string name="following" translatable="false">following</string>
+    <string name="msg_error_unable_select_profile_pic" translatable="false">Unable to set profile image. Please try again!</string>
+    <string name="lbl_set_profile_photo" translatable="false">Set profile image</string>
+    <string name="lbl_take_camera_picture" translatable="false">Take a picture</string>
+    <string name="lbl_choose_from_gallery" translatable="false">Choose from gallery</string>
+    <string name="toast_image_intent_null" translatable="false">Image picker option is missing!</string>
+
+    <!-- font families -->
+    <string name="font_family_light" translatable="false">sans-serif-light</string>
+    <string name="font_family_medium" translatable="false">sans-serif-medium</string>
+    <string name="font_family_regular" translatable="false">sans-serif</string>
+    <string name="font_family_condensed" translatable="false">sans-serif-condensed</string>
+    <string name="font_family_black" translatable="false">sans-serif-black</string>
+    <string name="font_family_thin" translatable="false">sans-serif-thin</string>
+    <string name="dialog_permission_title" translatable="false">Grant Permissions</string>
+    <string name="dialog_permission_message" translatable="false">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings" translatable="false">GOTO SETTINGS</string>
+
 </resources>

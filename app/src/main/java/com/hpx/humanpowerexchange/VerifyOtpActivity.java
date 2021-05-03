@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -67,7 +69,7 @@ public class VerifyOtpActivity extends BaseActivity {
         otp_textbox_six = findViewById(R.id.otp_edit_box6);
         verify_otp = findViewById(R.id.verify_otp_btn);
 
-        startSMSListener();
+        //startSMSListener();
 
         final EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four, otp_textbox_five, otp_textbox_six};
         otp_textbox_one.addTextChangedListener(new GenericTextWatcher(otp_textbox_one, edit));
@@ -100,49 +102,56 @@ public class VerifyOtpActivity extends BaseActivity {
 
                     @Override
                     public void run() {
-                        resendButton.setEnabled(true); // The button is enabled by the timer after 2 mins //
+                        resendButton.setEnabled(true);
+                        resendButton.setClickable(true);// The button is enabled by the timer after 2 mins //
                     }
                 });
             }
         }, 30*1000);
 
-    }
-
-    private void setOtpToTextBoxes(String otp) {
-        otp_textbox_one.setText(otp.substring(0,1));
-        otp_textbox_two.setText(otp.substring(1,2));
-        otp_textbox_three.setText(otp.substring(2,3));
-        otp_textbox_four.setText(otp.substring(3,4));
-        otp_textbox_five.setText(otp.substring(4,5));
-        otp_textbox_six.setText(otp.substring(5,6));
-    }
-
-    private void startSMSListener() {
-        // Get an instance of SmsRetrieverClient, used to start listening for a matching
-        // SMS message.
-        SmsRetrieverClient client = SmsRetriever.getClient(this /* context */);
-
-        // Starts SmsRetriever, which waits for ONE matching SMS message until timeout
-        // (5 minutes). The matching SMS message will be sent via a Broadcast Intent with
-        // action SmsRetriever#SMS_RETRIEVED_ACTION.
-        Task<Void> task = client.startSmsRetriever();
-
-        // Listen for success/failure of the start Task. If in a background thread, this
-        // can be made blocking using Tasks.await(task, [timeout]);
-        task.addOnSuccessListener(new OnSuccessListener<Void>() {
+        resendButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(Void aVoid) {
-                // Successfully started retriever, expect broadcast intent
-                Toast.makeText(getApplicationContext(), "Retrived the otp", Toast.LENGTH_SHORT).show();
-
+            public void onClick(View view) {
+                AppController.getInstance().addToRequestQueue(sendOtp(finalMobile), TAG);
             }
         });
 
+    }
+
+    public JsonObjectRequest sendOtp(final String mobile) {
+        return new JsonObjectRequest(UrlConstants.SEND_OTP_URL, getJsonWithMobile(mobile),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+                        Toast.makeText(AppController.getInstance().getApplicationContext(), "Otp Resent to your mobile number: "+ mobile , Toast.LENGTH_LONG).show();
+
+                        Intent i = new Intent(getApplicationContext(), VerifyOtpActivity.class);
+                        i.putExtra("mobile", mobile);
+                        startActivity(i);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AppController.getInstance().getApplicationContext(), "There is some error in sending Otp to your mobile number: "+ mobile , Toast.LENGTH_LONG).show();
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+            }
+        }
+        );
+    }
+
+    private void startSMSListener() {
+        SmsRetrieverClient client = SmsRetriever.getClient(this /* context */);
+        Task<Void> task = client.startSmsRetriever();
+        task.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(), "Retrived the otp", Toast.LENGTH_SHORT).show();
+            }
+        });
         task.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // Failed to start retriever, inspect Exception for more details
-                // ...
                 Toast.makeText(getApplicationContext(), "Not able to retrive the otp", Toast.LENGTH_SHORT).show();
             }
         });
