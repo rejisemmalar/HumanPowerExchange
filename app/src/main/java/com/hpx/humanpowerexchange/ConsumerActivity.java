@@ -28,6 +28,7 @@ import java.util.List;
 
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.READ_SERVICE_REQUEST;
@@ -58,6 +59,17 @@ public class ConsumerActivity extends BaseActivity {
         listView.setAdapter(adapter);
         emptyRequest = findViewById(R.id.emptyRequest);
 
+        Button createNewServiceRequest = findViewById(R.id.createServiceRequest);
+        Button changeToBeSP = findViewById(R.id.changeToBeSP);
+
+
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en");
+        if (language.equalsIgnoreCase("ta")) {
+            ((TextView)findViewById(R.id.textView)).setText("நுகர்வோர்");
+            ((TextView)findViewById(R.id.createServiceRequest)).setText("புதிய சேவை கோரிக்கை உருவாக்க");
+            changeToBeSP.setText("சேவை வழங்குநர்");
+        }
+
         showProgressDialog("Loading...");
 
         Bundle extras = this.getIntent().getExtras();
@@ -67,7 +79,6 @@ public class ConsumerActivity extends BaseActivity {
         AppController.getInstance().addToRequestQueue(fillServiceRequestList(mobile));
 
         final String finalMobile = mobile;
-        Button changeToBeSP = findViewById(R.id.changeToBeSP);
         changeToBeSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +89,6 @@ public class ConsumerActivity extends BaseActivity {
             }
         });
 
-        Button createNewServiceRequest = findViewById(R.id.createServiceRequest);
         createNewServiceRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

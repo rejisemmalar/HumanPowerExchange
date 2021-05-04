@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SAVE_USER_SERVICES;
@@ -53,6 +55,16 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
         preferenceEditor.putInt(HPX_USER_PAGE, SERVICE_PROVIDER_SELECTION_PAGE);
         preferenceEditor.commit();
 
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en");
+        Button saveDetails = findViewById(R.id.save);
+        Button changeToBeConsumer = findViewById(R.id.changeToBeConsumer);
+
+        if (language.equalsIgnoreCase("ta")) {
+            ((TextView)findViewById(R.id.textView)).setText("நீங்கள் வழங்கக்கூடிய சேவைகளைத் தேர்ந்தெடுக்கவும்");
+            saveDetails.setText("சேமி");
+            changeToBeConsumer.setText("நுகர்வோர்");
+        }
+
         listView = (ListView) findViewById(R.id.list);
         adapter = new ServiceProviderSelectionAdapter(this, serviceList);
         listView.setAdapter(adapter);
@@ -67,7 +79,6 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
 
         final String finalMobile = mobile;
 
-        Button saveDetails = findViewById(R.id.save);
         saveDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +102,6 @@ public class ServiceProviderSelectionActivity extends BaseActivity {
             }
         });
 
-        Button changeToBeConsumer = findViewById(R.id.changeToBeConsumer);
         changeToBeConsumer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

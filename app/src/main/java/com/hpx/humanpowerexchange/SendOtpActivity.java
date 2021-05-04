@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -40,6 +42,10 @@ import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 
+import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.USER_DETAILS_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.SERVICES_FOR_USER;
 
 public class SendOtpActivity extends BaseActivity {
@@ -49,14 +55,25 @@ public class SendOtpActivity extends BaseActivity {
     private int CREDENTIAL_PICKER_REQUEST = 1;
     private TextView txtView;
     private Button button;
+    private String language = "en";
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otp);
 
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        language = preferences.getString(HPX_USER_LANGUAGE, "en");
+
         txtView = (EditText) findViewById(R.id.editTextPhone);
         button = findViewById(R.id.button2);
+
+        if (language.equalsIgnoreCase("ta")) {
+            ((TextView) findViewById(R.id.sendOtpTextView)).setText("தொலைபேசி எண்ணை உள்ளிடவும்/எடுக்கவும்");
+            button.setText("otp அனுப்பு");
+        }
+
         phoneSelection();
         enableDisableSendOtpButton();
 
@@ -110,6 +127,9 @@ public class SendOtpActivity extends BaseActivity {
         } else if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE) {
             Toast.makeText(this, "No phone numbers found", Toast.LENGTH_LONG).show();
             txtView.setHint("Number not found. Type the number");
+            if (language.equalsIgnoreCase("ta")) {
+                txtView.setHint("எண் கிடைக்கவில்லை. எண்ணைத் தட்டச்சு செய்க");
+            }
             button.setEnabled(false);
             enableDisableSendOtpButton();
         }
