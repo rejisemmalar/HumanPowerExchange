@@ -34,6 +34,7 @@ import java.util.List;
 
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.UrlConstants.READ_SERVICE_REQUEST_FOR_SERVICE_PROVIDER;
@@ -64,6 +65,14 @@ public class ServiceProviderActivity extends BaseActivity {
         listView.setAdapter(adapter);
         emptyRequest = findViewById(R.id.emptyRequest);
 
+        Button changeToConsumer = findViewById(R.id.changeToConsumer);
+
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en");
+        if (language.equalsIgnoreCase("ta")) {
+            ((TextView)findViewById(R.id.textView)).setText("சேவை வழங்குநர்");
+            ((TextView)findViewById(R.id.existingRequest)).setText("உங்கள் சேவை வழங்கலுக்கான கோரிக்கை பட்டியல்");
+            changeToConsumer.setText("நுகர்வோர்");
+        }
         showProgressDialog("Loading...");
 
         Bundle extras = this.getIntent().getExtras();
@@ -74,7 +83,6 @@ public class ServiceProviderActivity extends BaseActivity {
 
         AppController.getInstance().addToRequestQueue(fillServiceRequestList(finalMobile));
 
-        Button changeToConsumer = findViewById(R.id.changeToConsumer);
         changeToConsumer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

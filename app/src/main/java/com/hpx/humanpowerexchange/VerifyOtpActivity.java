@@ -36,6 +36,7 @@ import java.util.TimerTask;
 import static com.hpx.humanpowerexchange.utils.AppConstant.APP_PREFERENCE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.CONSUMER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_MOBILE_ID;
+import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_LANGUAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.HPX_USER_VERIFIED;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_PAGE;
 import static com.hpx.humanpowerexchange.utils.AppConstant.SERVICE_PROVIDER_SELECTION_PAGE;
@@ -54,6 +55,17 @@ public class VerifyOtpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
 
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        String language = preferences.getString(HPX_USER_LANGUAGE, "en");
+
+        verify_otp = findViewById(R.id.verify_otp_btn);
+        final Button resendButton = findViewById(R.id.resend_otp_btn);
+
+        if (language.equalsIgnoreCase("ta")) {
+            verify_otp.setText("otp ஐ சரிபார்");
+            resendButton.setText("மீண்டும் அனுப்பு");
+        }
+
         String mobile="";
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
@@ -67,7 +79,6 @@ public class VerifyOtpActivity extends BaseActivity {
         otp_textbox_four = findViewById(R.id.otp_edit_box4);
         otp_textbox_five = findViewById(R.id.otp_edit_box5);
         otp_textbox_six = findViewById(R.id.otp_edit_box6);
-        verify_otp = findViewById(R.id.verify_otp_btn);
 
         //startSMSListener();
 
@@ -93,7 +104,6 @@ public class VerifyOtpActivity extends BaseActivity {
             }
         });
 
-        final Button resendButton = findViewById(R.id.resend_otp_btn);
         Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
             @Override
